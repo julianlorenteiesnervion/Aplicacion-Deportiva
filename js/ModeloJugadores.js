@@ -3,7 +3,6 @@ class Modelo {
     constructor() {
     }
 
-    // Métodos para manejar jugadores
     // Obtener todos los jugadores de la lista
     obtenerJugadores() {
         return this.listaJugadores;
@@ -43,22 +42,6 @@ class Modelo {
     // Obtener los jugadores que pertenecen a X posición
     obtenerJugadoresPorPosicion(posicion) {
         return this.listaJugadores.filter(jugador => jugador.getPosicion() === posicion);
-    }
-
-    // Métodos para manejar equipos
-    // Obtener todos los equipos de la lista
-    obtenerEquipos() {
-        return this.listaEquipos;
-    }
-
-    // Agregar un equipo a la lista
-    agregarEquipo(equipo) {
-        this.listaEquipos.push(equipo);
-    }
-
-    // Eliminar un equipo de la lista mediante su id
-    eliminarEquipo(id) {
-        this.listaEquipos = this.listaEquipos.filter(equipo => equipo.getId() !== id);
     }
 
 }
