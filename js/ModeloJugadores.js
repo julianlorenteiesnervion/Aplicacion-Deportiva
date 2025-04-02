@@ -1,4 +1,4 @@
-class Modelo {
+class ModeloJugadores {
 
     constructor() {
     }

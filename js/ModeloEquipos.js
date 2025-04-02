@@ -1,8 +1,8 @@
-class Modelo {
+class ModeloEquipos {
 
     constructor() {
     }
-    
+
     // Obtener todos los equipos de la lista
     obtenerEquipos() {
         return this.listaEquipos;
