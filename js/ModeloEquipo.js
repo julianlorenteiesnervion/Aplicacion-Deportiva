@@ -11,8 +11,10 @@ class ModeloEquipo {
 
     // Agregar un equipo a la lista
     agregarEquipo(equipo) {
-        this.listaEquipos.push(equipo);
-        this.agregarALocalStorage();
+        if (!this.listaEquipos.some(e => e.id === equipo.id)) {
+            this.listaEquipos.push(equipo);
+            this.agregarALocalStorage();
+        }
     }
 
     // Eliminar un equipo de la lista mediante su id
@@ -24,7 +26,11 @@ class ModeloEquipo {
     // Agrega al localStorage los equipos actuales
     agregarALocalStorage() {
         const equiposExistentes = localStorage.getItem('equipos') ? JSON.parse(localStorage.getItem('equipos')) : [];
-        const equiposActualizados = equiposExistentes.concat(this.listaEquipos);
+        const equiposActualizados = equiposExistentes.concat(
+            this.listaEquipos.filter(nuevoEquipo => 
+            !equiposExistentes.some(equipoExistente => equipoExistente.id === nuevoEquipo.id)
+            )
+        );
         localStorage.setItem('equipos', JSON.stringify(equiposActualizados));
     }
 
