@@ -1,4 +1,4 @@
-class ModeloJugadores {
+class ModeloJugador {
 
     constructor() {
         this.listaJugadores = [];

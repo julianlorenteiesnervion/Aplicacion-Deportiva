@@ -1,19 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="js/ModeloJugadores.js"></script>
     <title>Document</title>
+    <script src="js/ModeloEquipo.js"></script>
+    <script src="js/Equipo.js"></script>
 </head>
 <body>
-    
-    <input type="text" id="nombre" placeholder="Escribe tu nombre">
-    <button onclick="modelo.agregarJugador(new Jugador(1, 'Julián', 7, 1980, 'beti'))">Agregar jugador</button>
-
+    <input type="text" id="id" placeholder="ID">
+    <input type="text" id="nombre" placeholder="Nombre">
+    <input type="text" id="ciudad" placeholder="Ciudad">
+    <input type="text" id="estadio" placeholder="Estadio">
+    <button onclick="modeloEquipo.agregarEquipo(new Equipo(document.getElementById('id').value, document.getElementById('nombre').value, document.getElementById('ciudad').value, document.getElementById('estadio').value))">Agregar Equipo</button>
+    <button onclick="modeloEquipo.eliminarEquipo(document.getElementById('id').value)">Eliminar Equipo</button>
+    <button onclick="mostrarEquipos()">Mostrar</button>
+    <p id="listaEquipos"></p>
 
     <script>
-        const modelo = new ModeloJugadores();
+        const modeloEquipo = new ModeloEquipo();
+
+        let listaEquipos = document.getElementById("listaEquipos");
+
+        function mostrarEquipos() {
+            listaEquipos.innerHTML = ""; // Limpiar el contenido previo
+            modeloEquipo.obtenerEquipos().forEach(equipo => {
+                let equipoDiv = document.createElement("div");
+                equipoDiv.textContent = `ID: ${equipo.id}, Nombre: ${equipo.nombre}, Ciudad: ${equipo.ciudad}, Estadio: ${equipo.estadio}`;
+                listaEquipos.appendChild(equipoDiv);
+            });
+        }
+
+        // Ejecutar la función al cargar la página
+        window.onload = mostrarEquipos;
     </script>
 </body>
 </html>
