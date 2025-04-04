@@ -1,6 +1,7 @@
-class ModeloJugadores {
+class ModeloJugador {
 
     constructor() {
+        this.listaJugadores = [];
     }
 
     // Obtener todos los jugadores de la lista
@@ -10,7 +11,7 @@ class ModeloJugadores {
 
     // Agregar un jugador a la lista
     agregarJugador(jugador) {
-        localStorage.setItem('jugadores', localStorage.getItem('jugadores') + JSON.stringify(jugador));
+        this.listaJugadores.push(jugador);
     }
 
     // Eliminar un jugador de la lista mediante su id
