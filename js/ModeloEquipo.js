@@ -34,7 +34,7 @@ class ModeloEquipo {
         localStorage.setItem('equipos', JSON.stringify(equiposActualizados));
     }
 
-    // Elimina del localStorage los equipos actuales
+    // Elimina del localStorage el equipo según su id
     eliminarDelLocalStorage(id) {
         const equiposExistentes = localStorage.getItem('equipos') ? JSON.parse(localStorage.getItem('equipos')) : [];
         const equiposActualizados = equiposExistentes.filter(equipo => equipo.id !== id);
