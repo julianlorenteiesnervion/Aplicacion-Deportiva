@@ -11,16 +11,21 @@ class ModeloJugador {
 
     // Agregar un jugador a la lista
     agregarJugador(jugador) {
-        if (!this.listaJugadores.some(j => j.getId() === jugador.getId())) {
+        this.obtenerDeLocalStorage();
+        // Verifica si el jugador ya existe en la lista
+        // Si no existe, lo agrega
+        if (!this.listaJugadores.some(j => j.id === jugador.id)) {
             this.listaJugadores.push(jugador);
-            this.agregarALocalStorage();
+            this.subirALocalStorage();
         }
     }
 
     // Eliminar un jugador de la lista mediante su id
     eliminarJugador(id) {
-        this.listaJugadores = this.listaJugadores.filter(jugador => jugador.getId() !== id);
-        this.eliminarDelLocalStorage(id);
+        this.obtenerDeLocalStorage();
+        // Filtra la lista de jugadores para eliminar el jugador con el id especificado
+        this.listaJugadores = this.listaJugadores.filter(jugador => jugador.id !== id);
+        this.subirALocalStorage();
     }
 
     // Actualiza la posición de un jugador mediante su id
@@ -49,22 +54,16 @@ class ModeloJugador {
         return this.listaJugadores.filter(jugador => jugador.getPosicion() === posicion);
     }
 
-    // Agregar al localStorage los jugadores actuales
-    agregarALocalStorage() {
-        const jugadoresExistentes = localStorage.getItem('jugadores') ? JSON.parse(localStorage.getItem('jugadores')) : [];
-        const jugadoresActualizados = jugadoresExistentes.concat(
-            this.listaJugadores.filter(nuevoJugador => 
-            !jugadoresExistentes.some(jugadorExistente => jugadorExistente.id === nuevoJugador.id)
-            )
-        );
-        localStorage.setItem('jugadores', JSON.stringify(jugadoresActualizados));
+    // Carga en el array listaJugadores los jugadores que hay en el localStorage
+    // Si no hay nada en el localStorage, se carga un array vacío
+    obtenerDeLocalStorage() {
+        this.listaJugadores = JSON.parse(localStorage.getItem('jugadores')) || [];
     }
 
-    // Elimina del localStorage el jugador según su id
-    eliminarDelLocalStorage(id) {
-        const jugadoresExistentes = localStorage.getItem('jugadores') ? JSON.parse(localStorage.getItem('jugadores')) : [];
-        const jugadoresActualizados = jugadoresExistentes.filter(jugador => jugador.id !== id);
-        localStorage.setItem('jugadores', JSON.stringify(jugadoresActualizados));
+    // Sube la lista de jugadores al localStorage
+    // Se utiliza después de agregar o eliminar un jugador
+    subirALocalStorage() {
+        localStorage.setItem('jugadores', JSON.stringify(this.listaJugadores));
     }
 
 }
