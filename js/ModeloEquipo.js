@@ -11,34 +11,33 @@ class ModeloEquipo {
 
     // Agregar un equipo a la lista
     agregarEquipo(equipo) {
+        this.obtenerDeLocalStorage();
+        // Verifica si el equipo ya existe en la lista
+        // Si no existe, lo agrega
         if (!this.listaEquipos.some(e => e.id === equipo.id)) {
             this.listaEquipos.push(equipo);
-            this.agregarALocalStorage();
+            this.subirALocalStorage();
         }
     }
 
     // Eliminar un equipo de la lista mediante su id
     eliminarEquipo(id) {
-        this.listaEquipos = this.listaEquipos.filter(equipo => equipo.getId() !== id);
-        this.eliminarDelLocalStorage(id);
+        this.obtenerDeLocalStorage();
+        // Filtra la lista de equipos para eliminar el equipo con el id especificado
+        this.listaEquipos = this.listaEquipos.filter(equipo => equipo.id !== id);
+        this.subirALocalStorage();
     }
 
-    // Agrega al localStorage los equipos actuales
-    agregarALocalStorage() {
-        const equiposExistentes = localStorage.getItem('equipos') ? JSON.parse(localStorage.getItem('equipos')) : [];
-        const equiposActualizados = equiposExistentes.concat(
-            this.listaEquipos.filter(nuevoEquipo => 
-            !equiposExistentes.some(equipoExistente => equipoExistente.id === nuevoEquipo.id)
-            )
-        );
-        localStorage.setItem('equipos', JSON.stringify(equiposActualizados));
+    // Carga en el array listaEquipos los equipos que hay en el localStorage
+    // Si no hay nada en el localStorage, se carga un array vacío
+    obtenerDeLocalStorage() {
+        this.listaEquipos = JSON.parse(localStorage.getItem('equipos')) || [];
     }
 
-    // Elimina del localStorage el equipo según su id
-    eliminarDelLocalStorage(id) {
-        const equiposExistentes = localStorage.getItem('equipos') ? JSON.parse(localStorage.getItem('equipos')) : [];
-        const equiposActualizados = equiposExistentes.filter(equipo => equipo.id !== id);
-        localStorage.setItem('equipos', JSON.stringify(equiposActualizados));
+    // Sube la lista de equipos al localStorage
+    // Se utiliza después de agregar o eliminar un equipo
+    subirALocalStorage() {
+        localStorage.setItem('equipos', JSON.stringify(this.listaEquipos));
     }
 
 }
