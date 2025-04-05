@@ -76,8 +76,9 @@ class ModeloJugador {
     // Carga en el array listaJugadores los jugadores que hay en el localStorage
     // Si no hay nada en el localStorage, se carga un array vacío
     obtenerDeLocalStorage() {
-        this.listaJugadores = JSON.parse(localStorage.getItem('jugadores')) || [];
-    }
+        const datos = JSON.parse(localStorage.getItem('jugadores')) || [];
+        this.listaJugadores = datos.map(j => new Jugador(j.id, j.nombre, j.posicion, j.annoNacimiento, j.equipo));
+    }    
 
     // Sube la lista de jugadores al localStorage
     // Se utiliza después de agregar o eliminar un jugador
