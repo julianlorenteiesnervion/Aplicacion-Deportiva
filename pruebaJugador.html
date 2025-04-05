@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/ModeloJugador.js"></script>
+    <script src="js/Jugador.js"></script>
+</head>
+<body>
+    <form>
+        <label for="id">ID:</label>
+        <input type="text" id="id" name="id" required>
+        <br>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+        <br>
+        <label for="posicion">Posición:</label>
+        <input type="text" id="posicion" name="posicion" required>
+        <br>
+        <label for="annoNacimiento">Año de Nacimiento:</label>
+        <input type="number" id="annoNacimiento" name="annoNacimiento" required>
+        <br>
+        <label for="equipo">Equipo:</label>
+        <input type="text" id="equipo" name="equipo" required>
+        <br>
+        <button type="button" onclick="modeloJugador.agregarJugador(new Jugador(
+            document.getElementById('id').value,
+            document.getElementById('nombre').value,
+            document.getElementById('posicion').value,
+            document.getElementById('annoNacimiento').value,
+            document.getElementById('equipo').value
+        )); mostrarJugadores();">Enviar</button>
+
+        <button onclick="modeloJugador.eliminarJugador(document.getElementById('id').value)" type="button">Eliminar</button>
+    </form>
+
+    <p id="listaJugadores"></p>
+
+    <script>
+        const modeloJugador = new ModeloJugador();
+
+        let listaJugadores = document.getElementById("listaJugadores");
+
+        function mostrarJugadores() {
+            listaJugadores.innerHTML = ""; // Limpiar la lista antes de mostrar los jugadores
+
+            modeloJugador.obtenerJugadores().forEach(jugador => {
+                let jugadorInfo = `
+                    <div>
+                        <p>ID: ${jugador.id}</p>
+                        <p>Nombre: ${jugador.nombre}</p>
+                        <p>Posición: ${jugador.posicion}</p>
+                        <p>Año de Nacimiento: ${jugador.annoNacimiento}</p>
+                        <p>Equipo: ${jugador.equipo}</p>
+                    </div>
+                    <hr>
+                `;
+                listaJugadores.innerHTML += jugadorInfo;
+            });
+        }
+
+        window.onload = mostrarJugadores;
+    </script>
+</body>
+</html>
