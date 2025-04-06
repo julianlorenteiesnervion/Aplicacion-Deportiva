@@ -24,6 +24,7 @@
         document.getElementById('nombreEquipo').value, 
         document.getElementById('ciudadEquipo').value, 
         document.getElementById('estadioEquipo').value)))">Agregar Equipo</button>
+    <button onclick="modeloEquipo.eliminarEquipo(document.getElementById('idEquipo').value)">Eliminar Equipo</button>
 
     <h1>Crear Jugador</h1>
     <input type="text" id="idJugador" placeholder="ID del jugador">
@@ -38,6 +39,7 @@
         document.getElementById('annoNacimientoJugador').value, 
         document.getElementById('equipoJugador').value
     )))">Agregar Jugador</button>
+    <button onclick="modeloJugador.eliminarJugador(document.getElementById('idJugador').value)">Eliminar Jugador</button>
 
     <button onclick="mostrarJugadores(modeloJugador.obtenerJugadoresPorEquipo(2))">Mostrar</button>
 
