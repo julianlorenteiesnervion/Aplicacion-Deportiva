@@ -1,28 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Partidos de fútbol</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Equipos de fútbol</title>
+  <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
-    <h1>Gestión de jugadores y equipos de fútbol</h1>
+  <header>
+    <h1>Gestión de equipos de fútbol</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Crear Equipos</a></li>
+        <li><a href="./pag/jugadores.html">Crear Jugadores</a></li>
+        <li><a href="./pag/partidos.html">Crear Partidos</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <div>
-    <h2>Añadir equipos</h2>
-        <label for="nombreEquipo">Nombre: </label>
-        <input type="text" id="nombreEquipo">
-        <label for="ciudadEquipo">Ciudad: </label>
-        <input type="text" id="ciudadEquipo">
-        <label for="nombreEstadio">Nombre del estadio: </label>
-        <input type="text" id="nombreEstadio">
-        <button id="añadirEquipo">Añadir equipo</button>
-        <button id="eliminarEquipo">Eliminar equipo</button>
-        <ul id="listadoEquipos"></ul>
-    </div>
+  <div>
+    <label for="nombreEquipo">Nombre: </label>
+    <input type="text" id="nombreEquipo">
+    <br>
+    <label for="ciudadEquipo">Ciudad: </label>
+    <input type="text" id="ciudadEquipo">
+    <br>
+    <label for="nombreEstadio">Nombre del estadio: </label>
+    <input type="text" id="nombreEstadio">
+    <br>
+    <button id="añadirEquipo">Añadir equipo</button>
+  </div>
 
-    <script src="./js/Modelo.js"></script>
-    <script src="./js/Vista.js"></script>
-    <script src="./js/Controlador.js"></script>
+    <!--Div con el listado de equipos-->
+
+  <script src="./js/Modelo.js"></script>
+  <script src="./js/Vista.js"></script>
+  <script src="./js/Controlador.js"></script>
 </body>
+
 </html>
