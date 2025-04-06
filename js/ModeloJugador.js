@@ -15,14 +15,14 @@ class ModeloJugador {
         let res = 0;
 
         // Verifica si el jugador ya existe en la lista
-        if (!this.listaJugadores.some(j => j.id === jugador.id)) {
-            if (jugador.nombre.trim() === "") {
+        if (!this.listaJugadores.some(j => j.getId() === jugador.getId())) {
+            if (jugador.getNombre().trim() === "") {
                 res = 1; // Nombre vacío
-            } else if (jugador.posicion.trim() === "") {
+            } else if (jugador.getPosicion().trim() === "") {
                 res = 2; // Posición vacía
-            } else if (jugador.annoNacimiento.trim() === "") {
+            } else if (jugador.getAnnoNacimiento().trim() === "") {
                 res = 3; // Año de nacimiento vacío
-            } else if (jugador.equipo.trim() === "") {
+            } else if (jugador.getEquipo().trim() === "") {
                 res = 4; // Equipo vacío
             }
 
@@ -41,7 +41,7 @@ class ModeloJugador {
         this.obtenerDeLocalStorage();
 
         // Filtra la lista de jugadores para eliminar el jugador con el id especificado
-        this.listaJugadores = this.listaJugadores.filter(jugador => jugador.id !== id);
+        this.listaJugadores = this.listaJugadores.filter(jugador => jugador.getId() !== id);
         this.subirALocalStorage();
     }
 
@@ -109,7 +109,7 @@ class ModeloJugador {
             return 0;
         }
         // Devuelve el id del último jugador en la lista
-        return this.listaJugadores[this.listaJugadores.length - 1].id;
+        return this.listaJugadores[this.listaJugadores.length - 1].getId();
     }
 
 }
