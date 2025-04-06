@@ -45,8 +45,10 @@ class ModeloEquipo {
     // Carga en el array listaEquipos los equipos que hay en el localStorage
     // Si no hay nada en el localStorage, se carga un array vacío
     obtenerDeLocalStorage() {
-        this.listaEquipos = JSON.parse(localStorage.getItem('equipos')) || [];
+        const datos = JSON.parse(localStorage.getItem('equipos')) || [];
+        this.listaEquipos = datos.map(e => new Equipo(e.id, e.nombre, e.ciudad, e.estadio));
     }
+    
 
     // Sube la lista de equipos al localStorage
     // Se utiliza después de agregar o eliminar un equipo

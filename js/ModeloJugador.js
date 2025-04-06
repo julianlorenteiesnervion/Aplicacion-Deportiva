@@ -71,7 +71,7 @@ class ModeloJugador {
     obtenerJugadoresPorEquipo(equipo) {
         this.obtenerDeLocalStorage();
         // Filtra la lista de jugadores para obtener los que pertenecen al equipo especificado
-        return this.listaJugadores.filter(jugador => jugador.getEquipo() === equipo);
+        return this.listaJugadores.filter(jugador => Number(jugador.getEquipo()) === Number(equipo));
     }
 
     // Obtener los jugadores que pertenecen a X posición
@@ -85,7 +85,7 @@ class ModeloJugador {
     obtenerNumeroJugadoresPorEquipo(equipo) {
         this.obtenerDeLocalStorage();
         // Devuelve el número de jugadores que pertenecen al equipo especificado
-        return this.listaJugadores.reduce((contador, jugador) => jugador.getEquipo() === equipo ? contador + 1 : contador, 0);
+        return this.listaJugadores.reduce((contador, jugador) => Number(jugador.getEquipo()) === equipo ? contador + 1 : contador, 0);
     }
 
     // Carga en el array listaJugadores los jugadores que hay en el localStorage
