@@ -12,13 +12,28 @@ class ModeloJugador {
     // Agregar un jugador a la lista
     agregarJugador(jugador) {
         this.obtenerDeLocalStorage();
+        let res = 0;
 
         // Verifica si el jugador ya existe en la lista
-        // Si no existe, lo agrega
         if (!this.listaJugadores.some(j => j.id === jugador.id)) {
-            this.listaJugadores.push(jugador);
-            this.subirALocalStorage();
+            if (jugador.nombre.trim() === "") {
+                res = 1; // Nombre vacío
+            } else if (jugador.posicion.trim() === "") {
+                res = 2; // Posición vacía
+            } else if (jugador.annoNacimiento.trim() === "") {
+                res = 3; // Año de nacimiento vacío
+            } else if (jugador.equipo.trim() === "") {
+                res = 4; // Equipo vacío
+            }
+
+            // Si el jugador no existe y los campos no están vacíos, lo agrega a la lista
+            if (res === 0) {
+                this.listaJugadores.push(jugador);
+                this.subirALocalStorage();
+            }
         }
+
+        return res;
     }
 
     // Eliminar un jugador de la lista mediante su id
