@@ -19,11 +19,12 @@
     <input type="text" id="nombreEquipo" placeholder="Nombre del equipo">
     <input type="text" id="ciudadEquipo" placeholder="Ciudad del equipo">
     <input type="text" id="estadioEquipo" placeholder="Estadio del equipo">
-    <button onclick="modeloEquipo.agregarEquipo(new Equipo(
-    document.getElementById('idEquipo').value, 
-    document.getElementById('nombreEquipo').value, 
-    document.getElementById('ciudadEquipo').value, 
-    document.getElementById('estadioEquipo').value))">Agregar Equipo</button>
+    <button onclick="console.log(modeloEquipo.agregarEquipo(new Equipo(
+        document.getElementById('idEquipo').value, 
+        document.getElementById('nombreEquipo').value, 
+        document.getElementById('ciudadEquipo').value, 
+        document.getElementById('estadioEquipo').value)))">Agregar Equipo</button>
+    <button onclick="modeloEquipo.eliminarEquipo(document.getElementById('idEquipo').value)">Eliminar Equipo</button>
 
     <h1>Crear Jugador</h1>
     <input type="text" id="idJugador" placeholder="ID del jugador">
@@ -31,19 +32,22 @@
     <input type="text" id="posicionJugador" placeholder="Posición del jugador">
     <input type="text" id="annoNacimientoJugador" placeholder="Año de nacimiento del jugador">
     <input type="text" id="equipoJugador" placeholder="ID del equipo del jugador">
-    <button onclick="modeloJugador.agregarJugador(new Jugador(
+    <button onclick="console.log(modeloJugador.agregarJugador(new Jugador(
         document.getElementById('idJugador').value, 
         document.getElementById('nombreJugador').value, 
         document.getElementById('posicionJugador').value, 
         document.getElementById('annoNacimientoJugador').value, 
         document.getElementById('equipoJugador').value
-    ))">Agregar Jugador</button>
+    )))">Agregar Jugador</button>
+    <button onclick="modeloJugador.eliminarJugador(document.getElementById('idJugador').value)">Eliminar Jugador</button>
 
     <button onclick="mostrarJugadores(modeloJugador.obtenerJugadoresPorEquipo(2))">Mostrar</button>
 
     <p id="lista"></p>
 
     <script>
+
+        console.log(modeloJugador.obtenerNumeroJugadoresPorEquipo(1)); // Mostrar jugadores del equipo con ID 1
 
         console.log(modeloJugador.obtenerJugadoresPorEquipo(2)); // Mostrar jugadores del equipo con ID 2
 
