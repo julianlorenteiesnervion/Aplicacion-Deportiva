@@ -15,12 +15,12 @@ class ModeloEquipo {
         let res = 0;
 
         // Verifica si el equipo ya existe en la lista
-        if (!this.listaEquipos.some(e => e.id === equipo.id)) {
-            if (equipo.nombre.trim() === "") {
+        if (!this.listaEquipos.some(e => e.getId() === equipo.getId())) {
+            if (equipo.getNombre().trim() === "") {
                 res = 1; // Nombre vacío
-            } else if (equipo.ciudad.trim() === "") {
+            } else if (equipo.getCiudad().trim() === "") {
                 res = 2; // Ciudad vacía
-            } else if (equipo.estadio.trim() === "") {
+            } else if (equipo.getEstadio().trim() === "") {
                 res = 3; // Estadio vacío
             }
 
@@ -38,7 +38,7 @@ class ModeloEquipo {
     eliminarEquipo(id) {
         this.obtenerDeLocalStorage();
         // Filtra la lista de equipos para eliminar el equipo con el id especificado
-        this.listaEquipos = this.listaEquipos.filter(equipo => equipo.id !== id);
+        this.listaEquipos = this.listaEquipos.filter(equipo => equipo.getId() !== id);
         this.subirALocalStorage();
     }
 
@@ -62,7 +62,7 @@ class ModeloEquipo {
             return 0;
         }
         // Devuelve el id del último equipo en la lista
-        return this.listaEquipos[this.listaEquipos.length - 1].id;
+        return this.listaEquipos[this.listaEquipos.length - 1].getId();
     }
 
 }
