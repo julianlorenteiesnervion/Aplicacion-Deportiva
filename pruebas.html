@@ -31,13 +31,13 @@
     <input type="text" id="posicionJugador" placeholder="Posición del jugador">
     <input type="text" id="annoNacimientoJugador" placeholder="Año de nacimiento del jugador">
     <input type="text" id="equipoJugador" placeholder="ID del equipo del jugador">
-    <button onclick="modeloJugador.agregarJugador(new Jugador(
+    <button onclick="console.log(modeloJugador.agregarJugador(new Jugador(
         document.getElementById('idJugador').value, 
         document.getElementById('nombreJugador').value, 
         document.getElementById('posicionJugador').value, 
         document.getElementById('annoNacimientoJugador').value, 
         document.getElementById('equipoJugador').value
-    ))">Agregar Jugador</button>
+    )))">Agregar Jugador</button>
 
     <button onclick="mostrarJugadores(modeloJugador.obtenerJugadoresPorEquipo(2))">Mostrar</button>
 
