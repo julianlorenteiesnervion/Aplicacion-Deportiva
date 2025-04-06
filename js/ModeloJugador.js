@@ -86,4 +86,15 @@ class ModeloJugador {
         localStorage.setItem('jugadores', JSON.stringify(this.listaJugadores));
     }
 
+    // Devuelve el id del último jugador en la lista
+    obtenerUltimaId() {
+        this.obtenerDeLocalStorage();
+        // Si no hay jugadores en la lista, devuelve 0
+        if (this.listaJugadores.length === 0) {
+            return 0;
+        }
+        // Devuelve el id del último jugador en la lista
+        return this.listaJugadores[this.listaJugadores.length - 1].id;
+    }
+
 }

@@ -19,11 +19,11 @@
     <input type="text" id="nombreEquipo" placeholder="Nombre del equipo">
     <input type="text" id="ciudadEquipo" placeholder="Ciudad del equipo">
     <input type="text" id="estadioEquipo" placeholder="Estadio del equipo">
-    <button onclick="modeloEquipo.agregarEquipo(new Equipo(
-    document.getElementById('idEquipo').value, 
-    document.getElementById('nombreEquipo').value, 
-    document.getElementById('ciudadEquipo').value, 
-    document.getElementById('estadioEquipo').value))">Agregar Equipo</button>
+    <button onclick="console.log(modeloEquipo.agregarEquipo(new Equipo(
+        document.getElementById('idEquipo').value, 
+        document.getElementById('nombreEquipo').value, 
+        document.getElementById('ciudadEquipo').value, 
+        document.getElementById('estadioEquipo').value)))">Agregar Equipo</button>
 
     <h1>Crear Jugador</h1>
     <input type="text" id="idJugador" placeholder="ID del jugador">
