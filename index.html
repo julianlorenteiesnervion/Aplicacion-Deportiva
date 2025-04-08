@@ -39,7 +39,8 @@
     <button id="añadirEquipo" onclick="controller.agregarEquipo(document.getElementById('nombreEquipo').value, document.getElementById('ciudadEquipo').value, document.getElementById('nombreEstadio').value)">Añadir equipo</button>
   </div>
 
-  <h3 id="listaEquipos">Lista de los equipos</h3>
+  <h3>Lista de los equipos</h3>
+  <ul id="listaEquipos"></ul>
 
   <script>
     const controller = new Controlador();

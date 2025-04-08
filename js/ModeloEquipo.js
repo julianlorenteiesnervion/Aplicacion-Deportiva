@@ -6,8 +6,9 @@ class ModeloEquipo {
 
     // Obtener todos los equipos de la lista
     obtenerEquipos() {
-        return localStorage.getItem('equipos') ? JSON.parse(localStorage.getItem('equipos')) : this.listaEquipos;
-    }
+        this.obtenerDeLocalStorage();
+        return this.listaEquipos;
+    }    
 
     // Agregar un equipo a la lista
     agregarEquipo(equipo) {

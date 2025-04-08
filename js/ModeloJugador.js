@@ -6,7 +6,8 @@ class ModeloJugador {
 
     // Obtener todos los jugadores de la lista
     obtenerJugadores() {
-        return localStorage.getItem('jugadores') ? JSON.parse(localStorage.getItem('jugadores')) : this.listaJugadores;
+        this.obtenerDeLocalStorage();
+        return this.listaJugadores;
     }
 
     // Agregar un jugador a la lista
@@ -24,9 +25,11 @@ class ModeloJugador {
                 res = 3; // Año de nacimiento vacío
             } else if (jugador.getEquipo().trim() === "") {
                 res = 4; // Equipo vacío
+            } else if (jugador.getAnnoNacimiento() > new Date().getFullYear()) {
+                res = 5; // Año de nacimiento mayor al año actual
             }
 
-            // Si el jugador no existe y los campos no están vacíos, lo agrega a la lista
+            // Si el jugador no existe y los campos no están vacíos y cumplen con las reglas, lo agrega a la lista
             if (res === 0) {
                 this.listaJugadores.push(jugador);
                 this.subirALocalStorage();
