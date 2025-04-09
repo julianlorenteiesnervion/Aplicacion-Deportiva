@@ -1,0 +1,23 @@
+#listadoEquipos {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.infoEquipo {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5em;
+    margin-bottom: 1em;
+}
+
+.eliminarEquipo {
+    padding: 0.8em;
+    background-color: #a8d0ff;
+    margin-left: auto;
+}
+
+p {
+    margin: 1em;
+    font-weight: bold;
+    font-size: 10%;
+}
