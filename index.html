@@ -23,7 +23,7 @@
     <div id="menus">
         <div id="menu_izq">
             <div id="botones">
-                <button>Inicio</button>
+                <button onclick="controller.mostrarMenuInicio()">Inicio</button>
                 <br>
                 <button onclick="controller.mostrarMenuEquipos()">Equipos</button>
                 <br>
@@ -31,18 +31,8 @@
             </div>
         </div>
         <div id="menu_drch">
-            <div id="menu_añadir_equipo">
-                <input type="text" id="nombre_equipo" placeholder="Equipo...">
-                <input type="text" id="nombre_ciudad" placeholder="Ciudad...">
-                <input type="text" id="nombre_estadio" placeholder="Estadio...">
-                <button onclick="controller.agregarEquipo(
-                    document.getElementById('nombre_equipo').value,
-                    document.getElementById('nombre_ciudad').value,
-                    document.getElementById('nombre_estadio').value
-                )">Agregar</button>
-            </div>
-            <h3>Listado de equipos</h3>
-            <ul id="lista"></ul>
+            <h1>Bienvenido,</h1>
+            <h3>aquí tienes algunas estadísticas</h3>
         </div>
     </div>
     <script>
