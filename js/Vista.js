@@ -5,12 +5,24 @@ class Vista {
     }
 
     mostrarEquipos(equipos) {
-        const lista = document.getElementById('listaEquipos');
+        const lista = document.getElementById('lista');
 
         lista.innerHTML = ""; // Limpiar la lista antes de mostrar los equipos
 
         equipos.forEach(equipo => {
             lista.innerHTML += `<li>${equipo.getId()} - ${equipo.getNombre()} - ${equipo.getCiudad()} - ${equipo.getEstadio()}</li>`;    
         });
+    }
+
+    mostrarMenuEquipos() {
+        const menu = document.getElementById('menu_drch');
+
+        document.title = "FutManager - Equipos";
+
+        menu.innerHTML = `<div id="menu_añadir_equipo">
+            </div>
+            <h3>Listado de equipos</h3>
+            <ul id="lista">
+            </ul>`;
     }
 }
