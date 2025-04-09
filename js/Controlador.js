@@ -11,4 +11,9 @@ class Controlador {
         this.modeloEquipo.agregarEquipo(equipo);
         this.vista.mostrarEquipos(this.modeloEquipo.obtenerEquipos());
     }
+
+    mostrarMenuEquipos() {
+        this.vista.mostrarMenuEquipos();
+        // this.vista.mostrarEquipos(this.modeloEquipo.obtenerEquipos());
+    }
 }
