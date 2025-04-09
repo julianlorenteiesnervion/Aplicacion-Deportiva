@@ -1,60 +1,136 @@
+/* Estilo general */
 body {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Segoe UI', Calibri, sans-serif;
     margin: 0;
-    background-color: rgb(22, 22, 22);
-    color: white;
+    background-color: #161616;
+    color: #ffffff;
 }
 
-#menus {
-    display: flex;
-}
-
-#menu_izq {
-    background-color: rgb(0, 119, 255);
-    width: 15%;
-    height: 100vh;
-}
-
-#menu_izq #botones {
-    list-style-type: none;
-    text-align: center;
-}
-
-#menu_izq #botones button {
+/* HEADER FIJO */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 3em;
-    background: none;
-    color: white;
-    border: none;
-    font-size: 1em;
-}
-
-#menu_izq #botones button:hover {
-    background-color: rgb(0, 100, 255);
-    cursor: pointer;
-}
-
-#menu_drch {
-    width: 85%;
-    padding-left: 1em;
+    z-index: 1000;
+    background-color: rgb(0, 158, 26);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 #titulo {
-    background-color: rgb(0, 119, 255);
-    text-align: end;
-    padding-right: 2em;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    padding: 1em 2em;
+}
+
+#titulo img {
+    width: 40px;
+    height: 40px;
+}
+
+#titulo h2 {
     margin: 0;
-    padding-top: 1em;
-    padding-bottom: 1em;
+    font-size: 1.5em;
     color: white;
 }
 
-#menu_añadir_equipo {
-    padding: 1em;
+/* MENÚ IZQUIERDO FIJO */
+#menu_izq {
+    position: fixed;
+    top: 70px; /* Altura del header */
+    left: 0;
+    width: 15%;
+    height: calc(100vh - 70px);
+    background-color: #0e0e0e;
     padding-top: 2em;
+    overflow-y: auto;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.4);
+}
+
+#menu_izq #botones {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+}
+
+#menu_izq #botones button {
+    width: 80%;
+    padding: 0.8em;
+    font-size: 1em;
+    background: none;
+    color: white;
+    border: 2px solid #00a52f;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+#menu_izq #botones button:hover {
+    background-color: #009022;
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+/* CONTENIDO DERECHO */
+#menu_drch {
+    margin-left: 15%;
+    padding: 100px 2em 2em;
+}
+
+/* FORMULARIO DE EQUIPO */
+#menu_añadir_equipo {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    max-width: 500px;
+    margin-bottom: 2em;
 }
 
 #menu_añadir_equipo input {
-    width: 20em;
-    padding: 0.5em;
+    padding: 0.6em;
+    font-size: 1em;
+    border: none;
+    border-radius: 6px;
+    background-color: #292929;
+    color: white;
+    outline: none;
+}
+
+#menu_añadir_equipo input::placeholder {
+    color: #bbb;
+}
+
+#menu_añadir_equipo button {
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    background-color: rgb(0, 158, 26);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+#menu_añadir_equipo button:hover {
+    background-color: rgb(0, 120, 20);
+    cursor: pointer;
+}
+
+/* LISTADO */
+h3 {
+    margin-top: 1em;
+    font-size: 1.3em;
+    color: #00ff55;
+}
+
+ul#lista {
+    list-style: disc inside;
+    padding-left: 0;
+    margin-top: 0.5em;
+}
+
+ul#lista li {
+    padding: 0.5em 0;
+    border-bottom: 1px solid #333;
 }

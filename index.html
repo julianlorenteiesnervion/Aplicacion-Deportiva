@@ -1,49 +1,52 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Equipos de fútbol</title>
-  <link rel="stylesheet" href="./css/style.css">
-  <script src="js/Equipo.js"></script>
-  <script src="js/Jugador.js"></script>
-  <script src="js/ModeloEquipo.js"></script>
-  <script src="js/ModeloJugador.js"></script>
-  <script src="js/Vista.js"></script>
-  <script src="js/Controlador.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FutManager - Inicio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="img/favicon.png" type="image/x-icon">
+    <script src="js/Equipo.js"></script>
+    <script src="js/Jugador.js"></script>
+    <script src="js/ModeloEquipo.js"></script>
+    <script src="js/ModeloJugador.js"></script>
+    <script src="js/Vista.js"></script>
+    <script src="js/Controlador.js"></script>
 </head>
-
 <body>
-  <header>
-    <h1>Gestión de equipos de fútbol</h1>
-    <nav>
-      <ul>
-        <li><a href="index.html">Crear Equipos</a></li>
-        <li><a href="./pag/jugadores.html">Crear Jugadores</a></li>
-        <li><a href="./pag/partidos.html">Crear Partidos</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <div>
-    <label for="nombreEquipo">Nombre: </label>
-    <input type="text" id="nombreEquipo">
-    <br>
-    <label for="ciudadEquipo">Ciudad: </label>
-    <input type="text" id="ciudadEquipo">
-    <br>
-    <label for="nombreEstadio">Nombre del estadio: </label>
-    <input type="text" id="nombreEstadio">
-    <br>
-    <button id="añadirEquipo" onclick="controller.agregarEquipo(document.getElementById('nombreEquipo').value, document.getElementById('ciudadEquipo').value, document.getElementById('nombreEstadio').value)">Añadir equipo</button>
-  </div>
-
-  <h3>Lista de los equipos</h3>
-  <ul id="listaEquipos"></ul>
-
-  <script>
-    const controller = new Controlador();
-  </script>
+    <header>
+        <div id="titulo">
+            <img src="img/favicon.png">
+            <h2>FutManager</h2>
+        </div>
+    </header>
+    <div id="menus">
+        <div id="menu_izq">
+            <div id="botones">
+                <button>Inicio</button>
+                <br>
+                <button onclick="controller.mostrarMenuEquipos()">Equipos</button>
+                <br>
+                <button>Jugadores</button>
+            </div>
+        </div>
+        <div id="menu_drch">
+            <div id="menu_añadir_equipo">
+                <input type="text" id="nombre_equipo" placeholder="Equipo...">
+                <input type="text" id="nombre_ciudad" placeholder="Ciudad...">
+                <input type="text" id="nombre_estadio" placeholder="Estadio...">
+                <button onclick="controller.agregarEquipo(
+                    document.getElementById('nombre_equipo').value,
+                    document.getElementById('nombre_ciudad').value,
+                    document.getElementById('nombre_estadio').value
+                )">Agregar</button>
+            </div>
+            <h3>Listado de equipos</h3>
+            <ul id="lista"></ul>
+        </div>
+    </div>
+    <script>
+        const controller = new Controlador();
+    </script>
 </body>
 </html>

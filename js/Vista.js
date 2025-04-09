@@ -16,6 +16,9 @@ class Vista {
 
     mostrarMenuEquipos() {
         const menu = document.getElementById('menu_drch');
+
+        document.title = "FutManager - Equipos";
+
         menu.innerHTML = `<div id="menu_añadir_equipo">
             </div>
             <h3>Listado de equipos</h3>
