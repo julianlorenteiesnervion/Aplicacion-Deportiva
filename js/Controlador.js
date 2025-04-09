@@ -14,6 +14,7 @@ class Controlador {
 
     mostrarMenuEquipos() {
         this.vista.mostrarMenuEquipos();
+    }
       
     eliminarEquipo(id) {
         this.modeloEquipo.eliminarEquipo(id);
