@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Equipos de fútbol</title>
   <link rel="stylesheet" href="./css/style.css">
+  <script src="js/Equipo.js"></script>
+  <script src="js/Jugador.js"></script>
+  <script src="js/ModeloEquipo.js"></script>
+  <script src="js/ModeloJugador.js"></script>
+  <script src="js/Vista.js"></script>
+  <script src="js/Controlador.js"></script>
 </head>
 
 <body>
@@ -30,14 +36,14 @@
     <label for="nombreEstadio">Nombre del estadio: </label>
     <input type="text" id="nombreEstadio">
     <br>
-    <button id="añadirEquipo">Añadir equipo</button>
+    <button id="añadirEquipo" onclick="controller.agregarEquipo(document.getElementById('nombreEquipo').value, document.getElementById('ciudadEquipo').value, document.getElementById('nombreEstadio').value)">Añadir equipo</button>
   </div>
 
-    <!--Div con el listado de equipos-->
+  <h3>Lista de los equipos</h3>
+  <ul id="listaEquipos"></ul>
 
-  <script src="./js/Modelo.js"></script>
-  <script src="./js/Vista.js"></script>
-  <script src="./js/Controlador.js"></script>
+  <script>
+    const controller = new Controlador();
+  </script>
 </body>
-
 </html>
