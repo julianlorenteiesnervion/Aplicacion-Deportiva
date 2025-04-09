@@ -16,6 +16,7 @@ class Controlador {
         this.modeloEquipo.eliminarEquipo(id);
         this.vista.mostrarEquipos(this.modeloEquipo.obtenerEquipos());
     }
+
     agregarJugador(nombre, posicion, annoNacimiento, equipo) {
         let jugador = new Jugador(this.modeloJugador.obtenerUltimaId() + 1, nombre, posicion, annoNacimiento, equipo);
         this.modeloJugador.agregarJugador(jugador);
@@ -30,5 +31,26 @@ class Controlador {
     actualizarPosicionJugador(id, nuevaPosicion) {  
         this.modeloJugador.actualizarPosicion(id, nuevaPosicion);
         this.vista.mostrarJugadores(this.modeloJugador.obtenerJugadores());
+    }
+
+    actualizarEquipoJugador(id, nuevoEquipo) {  
+        this.modeloJugador.actualizarEquipo(id, nuevoEquipo);
+        this.vista.mostrarJugadores(this.modeloJugador.obtenerJugadores());
+    }
+
+    mostrarMenuJugadores(){
+        this.vista.mostrarMenuJugadores();
+    }
+
+    mostrarMenuEquipos(){
+        this.vista.mostrarMenuEquipos();
+    }
+
+    mostrarJugadoresPorEquipo(equipo) {
+        this.vista.mostrarJugadores(this.modeloJugador.obtenerJugadoresPorEquipo(equipo));
+    }
+
+    mostrarJugadoresPorPosicion(posicion) {
+        this.vista.mostrarJugadores(this.modeloJugador.obtenerJugadoresPorPosicion(posicion));
     }
 }
