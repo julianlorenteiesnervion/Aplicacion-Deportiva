@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jugadores de fútbol</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1>Gestión de jugadores de fútbol</h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Crear Equipos</a></li>
+        <li><a href="">Crear Jugadores</a></li>
+        <li><a href="./partidos.html">Crear Partidos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div>
+    <label for="nombreJugador">Nombre: </label>
+    <input type="text" id="nombreJugador">
+    <br>
+    <label for="posicion">Posición: </label>
+    <input type="text" id="posicion">
+    <br>
+    <label for="añoNacimiento">Año de nacimiento: </label>
+    <input type="number" id="añoNacimiento">
+    <br>
+    <label for="equipo">Selecciona su equipo: </label>
+    <select id="equipo">
+      <option>Nombre del equipo</option>
+    </select>
+    <br>
+    <button id="botonJugador">Añadir jugador</button>
+  </div>
+
+  <!--Div con el listado de jugadores-->
+
+  <script src="./js/Modelo.js"></script>
+  <script src="./js/Vista.js"></script>
+  <script src="./js/Controlador.js"></script>
+</body>
+
+</html>
