@@ -13,6 +13,16 @@ class Vista {
         });
     }
 
+    mostrarJugadores(jugadores) {
+        const lista = document.getElementById('lista');
+
+        lista.innerHTML = ""; // Limpiar la lista antes de mostrar los jugadores
+
+        jugadores.forEach(jugador => {
+            lista.innerHTML += `<li>${jugador.getId()} - ${jugador.getNombre()} - ${jugador.getPosicion()} - ${jugador.getAnnoNacimiento()} - ${jugador.getEquipo()}</li>`;    
+        });
+    }
+
     mostrarMenuInicio() {
         const menu = document.getElementById('menu_drch');
 
