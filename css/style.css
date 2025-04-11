@@ -41,11 +41,56 @@ nav li {
     text-align: center;
 }
 
+
 nav a {
     display: block;
     padding: 4% 0;
     color: black;
     text-decoration: none;
+}
+
+#menu_izq #botones button:hover {
+    background-color: #009022;
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+/* CONTENIDO DERECHO */
+#menu_drch {
+    margin-left: 15%;
+    padding: 100px 2em 2em;
+}
+
+/* FORMULARIOS */
+#menu_añadir_equipo, #menu_añadir_jugador {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    max-width: 500px;
+    margin-bottom: 2em;
+}
+
+#menu_añadir_equipo input, #menu_añadir_jugador input {
+    padding: 0.6em;
+    font-size: 1em;
+    border: none;
+    border-radius: 6px;
+    background-color: #292929;
+    color: white;
+    outline: none;
+}
+
+#menu_añadir_equipo input::placeholder, #menu_añadir_jugador input::placeholder {
+    color: #bbb;
+}
+
+#menu_añadir_equipo button, #menu_añadir_jugador button, #listado_filtrado button {
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    background-color: rgb(0, 158, 26);
+    color: white;
+    border: none;
+    border-radius: 6px;
     font-weight: bold;
     transition: background-color 0.3s ease;
     font-size: 100%;

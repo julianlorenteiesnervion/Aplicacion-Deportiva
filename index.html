@@ -31,8 +31,23 @@
             </div>
         </div>
         <div id="menu_drch">
-            <h1>Bienvenido,</h1>
-            <h3>aquí tienes algunas estadísticas</h3>
+            <div id="menu_añadir_jugador">
+                <input type="text" id="nombre_jugador" placeholder="Jugador...">
+                <input type="text" id="nombre_posicion" placeholder="Posición...">
+                <input type="text" id="anno_nacimiento" placeholder="Año de nacimiento...">
+                <input type="text" id="id_equipo" placeholder="ID del equipo...">
+                <button onclick="controller.agregarJugador(
+                    document.getElementById('nombre_jugador').value,
+                    document.getElementById('nombre_posicion').value,
+                    document.getElementById('anno_nacimiento').value,
+                    document.getElementById('id_equipo').value
+                )">Agregar</button>
+            </div>
+            <div id="listado_filtrado">
+                <h3>Listado de jugadores</h3>
+                <button>Filtrar</button>
+            </div>
+            <ul id="lista"></ul>
         </div>
     </div>
     <script>
