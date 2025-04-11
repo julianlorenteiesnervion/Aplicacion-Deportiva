@@ -40,4 +40,25 @@ class Vista {
             <h3>Listado de equipos</h3>
             <ul id="lista"></ul>`;
     }
+
+    mostrarMenuJugadores() {
+        const menu = document.getElementById('menu_drch');
+
+        document.title = "FutManager - Jugadores";
+
+        menu.innerHTML = `<div id="menu_añadir_jugador">
+                <input type="text" id="nombre_jugador" placeholder="Jugador...">
+                <input type="text" id="nombre_posicion" placeholder="Posición...">
+                <input type="text" id="anno_nacimiento" placeholder="Año de nacimiento...">
+                <input type="text" id="id_equipo" placeholder="ID del equipo...">
+                <button onclick="controller.agregarJugador(
+                    document.getElementById('nombre_jugador').value,
+                    document.getElementById('nombre_posicion').value,
+                    document.getElementById('anno_nacimiento').value,
+                    document.getElementById('id_equipo').value
+                )">Agregar</button>
+            </div>
+            <h3>Listado de jugadores</h3>
+            <ul id="lista"></ul>`;
+    }
 }

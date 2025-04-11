@@ -15,6 +15,11 @@ class Controlador {
         this.mostrarEquipos();
     }
 
+    mostrarMenuJugadores() {
+        this.vista.mostrarMenuJugadores();
+        this.mostrarJugadores();
+    }
+
     agregarEquipo(nombre, ciudad, estadio) {
         let equipo = new Equipo(Number(this.modeloEquipo.obtenerUltimaId()) + 1, nombre, ciudad, estadio);
         this.modeloEquipo.agregarEquipo(equipo);
