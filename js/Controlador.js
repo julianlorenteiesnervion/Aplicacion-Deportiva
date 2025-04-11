@@ -35,10 +35,14 @@ class Controlador {
         this.vista.mostrarEquipos(this.modeloEquipo.obtenerEquipos());
     }
 
+    mostrarJugadores() {
+        this.vista.mostrarJugadores(this.modeloJugador.obtenerJugadores());
+    }
+
     agregarJugador(nombre, posicion, annoNacimiento, equipo) {
         let jugador = new Jugador(Number(this.modeloJugador.obtenerUltimaId()) + 1, nombre, posicion, annoNacimiento, equipo);
         this.modeloJugador.agregarJugador(jugador);
-        this.vista.mostrarJugadores(this.modeloJugador.obtenerJugadores());
+        this.mostrarJugadores();
     }
 
     eliminarJugador(id) {
