@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FutManager - Inicio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/favicon.png" type="image/x-icon">
+    <script src="js/Equipo.js"></script>
+    <script src="js/Jugador.js"></script>
+    <script src="js/ModeloEquipo.js"></script>
+    <script src="js/ModeloJugador.js"></script>
+    <script src="js/Vista.js"></script>
+    <script src="js/Controlador.js"></script>
+</head>
+<body>
+    <header>
+        <div id="titulo">
+            <img src="img/favicon.png">
+            <h2>FutManager</h2>
+        </div>
+    </header>
+    <div id="menus">
+        <div id="menu_izq">
+            <div id="botones">
+                <button onclick="controller.mostrarMenuInicio()">Inicio</button>
+                <br>
+                <button onclick="controller.mostrarMenuEquipos()">Equipos</button>
+                <br>
+                <button onclick="controller.mostrarMenuJugadores()">Jugadores</button>
+            </div>
+        </div>
+        <div id="menu_drch">
+            <div id="menu_añadir_jugador">
+                <input type="text" id="nombre_jugador" placeholder="Jugador...">
+                <input type="text" id="nombre_posicion" placeholder="Posición...">
+                <input type="text" id="anno_nacimiento" placeholder="Año de nacimiento...">
+                <input type="text" id="id_equipo" placeholder="ID del equipo...">
+                <button onclick="controller.agregarJugador(
+                    document.getElementById('nombre_jugador').value,
+                    document.getElementById('nombre_posicion').value,
+                    document.getElementById('anno_nacimiento').value,
+                    document.getElementById('id_equipo').value
+                )">Agregar</button>
+            </div>
+            <div id="listado_filtrado">
+                <h3>Listado de jugadores</h3>
+                <button>Filtrar</button>
+            </div>
+            <ul id="lista"></ul>
+        </div>
+    </div>
+    <script>
+        const controller = new Controlador();
+    </script>
+</body>
+</html>
