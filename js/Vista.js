@@ -1,18 +1,24 @@
 class Vista {
 
-    constructor() {
-    }
-
+    // Mostrar cada equipo con su información y cada uno tiene dos botones para modificar y eliminar
     mostrarEquipos(equipos) {
         const lista = document.getElementById('lista');
 
         lista.innerHTML = ""; // Limpiar la lista antes de mostrar los equipos
 
         equipos.forEach(equipo => {
-            lista.innerHTML += `<li>${equipo.getId()} - ${equipo.getNombre()} - ${equipo.getCiudad()} - ${equipo.getEstadio()}</li>`;    
+            lista.innerHTML += `
+            <li>
+              <span class="nombre">${equipo.getNombre()}</span><br>
+              <span class="info">Ciudad: ${equipo.getCiudad()}</span><br>
+              <span class="info">Estadio: ${equipo.getEstadio()}</span>
+              <div class="button-group"><button onclick="controller.modificarEquipo(${equipo.getId()})" class="modificar">Modificar</button>
+              <button onclick="controller.eliminarEquipo(${equipo.getId()})" class="eliminar">Eliminar</button></div>
+            </li>`;
         });
     }
 
+    // Mostrar el menú de inicio dandole la bienvenida al usuario
     mostrarMenuInicio() {
         const menu = document.getElementById('menu_drch');
 
@@ -22,6 +28,7 @@ class Vista {
             <h3>aquí tienes algunas estadísticas</h3>`;
     }
 
+    // Mostrar el menú de equipos donde se puede agregar un nuevo equipo 
     mostrarMenuEquipos() {
         const menu = document.getElementById('menu_drch');
 
@@ -41,6 +48,7 @@ class Vista {
             <ul id="lista"></ul>`;
     }
 
+    /// Mostrar el menú de jugadores donde se puede agregar un nuevo jugador 
     mostrarMenuJugadores() {
         const menu = document.getElementById('menu_drch');
 
