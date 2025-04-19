@@ -21,6 +21,15 @@ class Controlador {
         this.mostrarJugadores();
     }
 
+    /* Modales */
+    abrirModalFiltro() {
+        document.getElementById('modalFiltro').style.display = 'block';
+    }
+
+    cerrarModalFiltro() {
+        document.getElementById('modalFiltro').style.display = 'none';
+    }
+
     /* Funciones para manejar los equipos */
     agregarEquipo(nombre, ciudad, estadio) {
         let equipo = new Equipo(Number(this.modeloEquipo.obtenerUltimaId()) + 1, nombre, ciudad, estadio);
@@ -86,7 +95,7 @@ class Controlador {
         }
     
         this.vista.mostrarJugadores(jugadoresFiltrados);
-        cerrarModalFiltro();
+        this.cerrarModalFiltro(); // Usar el método del controlador
     
         document.getElementById("btn-limpiar-filtros").style.display = "inline-block";
     }

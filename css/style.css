@@ -136,6 +136,21 @@ nav a:hover {
     padding: 100px 2em 2em;
 }
 
+#menu_añadir_jugador select {
+    padding: 0.6em;
+    font-size: 1em;
+    border: none;
+    border-radius: 6px;
+    background-color: #292929;
+    color: white;
+    outline: none;
+    width: 100%;
+}
+
+#menu_añadir_jugador select option {
+    background-color: #292929;
+}
+
 /* FORMULARIOS */
 #menu_añadir_equipo, #menu_añadir_jugador {
     display: flex;
