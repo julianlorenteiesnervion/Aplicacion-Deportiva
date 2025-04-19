@@ -9,6 +9,7 @@ class Vista {
         equipos.forEach(equipo => {
             lista.innerHTML += `
             <li>
+            <span class="id">${equipo.getId()}</span><br>
               <span class="nombre">${equipo.getNombre()}</span><br>
               <span class="info">Ciudad: ${equipo.getCiudad()}</span><br>
               <span class="info">Estadio: ${equipo.getEstadio()}</span>
@@ -25,7 +26,16 @@ class Vista {
         lista.innerHTML = ""; // Limpiar la lista antes de mostrar los jugadores
 
         jugadores.forEach(jugador => {
-            lista.innerHTML += `<li>${jugador.getId()} - ${jugador.getNombre()} - ${jugador.getPosicion()} - ${jugador.getAnnoNacimiento()} - ${jugador.getEquipo()}</li>`;    
+            lista.innerHTML += `
+            <li>
+              <span class="id">${jugador.getId()}</span><br>
+              <span class="nombre">${jugador.getNombre()}</span><br>
+              <span class="info">Posición: ${jugador.getPosicion()}</span><br>
+              <span class="info">Año de nacimiento: ${jugador.getAnnoNacimiento()}</span><br>
+              <span class="info">Equipo: ${jugador.getEquipo()}</span>
+              <div class="button-group"><button onclick="controller.modificarJugador(${jugador.getId()})" class="modificar">Modificar</button>
+              <button onclick="controller.eliminarJugador(${jugador.getId()})" class="eliminar">Eliminar</button></div>
+            </li>`;
         });
     }
 

@@ -6,6 +6,7 @@ class Controlador {
         this.vista = new Vista();
     }
 
+    /* Funciones para mostrar los menús */
     mostrarMenuInicio() {
         this.vista.mostrarMenuInicio();
     }
@@ -20,21 +21,23 @@ class Controlador {
         this.mostrarJugadores();
     }
 
+    /* Funciones para manejar los equipos */
     agregarEquipo(nombre, ciudad, estadio) {
         let equipo = new Equipo(Number(this.modeloEquipo.obtenerUltimaId()) + 1, nombre, ciudad, estadio);
         this.modeloEquipo.agregarEquipo(equipo);
-        this.vista.mostrarEquipos(this.modeloEquipo.obtenerEquipos());
-    } 
+        this.mostrarEquipos();
+    }
       
     eliminarEquipo(id) {
         this.modeloEquipo.eliminarEquipo(id);
-        this.vista.mostrarEquipos(this.modeloEquipo.obtenerEquipos());
+        this.mostrarEquipos();
     }
 
     mostrarEquipos() {
         this.vista.mostrarEquipos(this.modeloEquipo.obtenerEquipos());
     }
-
+    
+    /* Funciones para manejar los jugadores */
     mostrarJugadores() {
         this.vista.mostrarJugadores(this.modeloJugador.obtenerJugadores());
     }
@@ -47,11 +50,11 @@ class Controlador {
 
     eliminarJugador(id) {
         this.modeloJugador.eliminarJugador(id);
-        this.vista.mostrarJugadores(this.modeloJugador.obtenerJugadores());
+        this.mostrarJugadores();
     }
 
     actualizarPosicionJugador(id, nuevaPosicion) {  
         this.modeloJugador.actualizarPosicion(id, nuevaPosicion);
-        this.vista.mostrarJugadores(this.modeloJugador.obtenerJugadores());
+        this.mostrarJugadores();
     }
 }
