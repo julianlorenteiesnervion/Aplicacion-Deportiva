@@ -31,12 +31,58 @@
             </div>
         </div>
         <div id="menu_drch">
-            <h1>Bienvenido,</h1>
-            <h3>aquí tienes algunas estadísticas</h3>
+            <div id="menu_añadir_jugador">
+                <input type="text" id="nombre_jugador" placeholder="Jugador...">
+                <input type="text" id="nombre_posicion" placeholder="Posición...">
+                <input type="text" id="anno_nacimiento" placeholder="Año de nacimiento...">
+                <input type="text" id="id_equipo" placeholder="ID del equipo...">
+                <button onclick="controller.agregarJugador(
+                    document.getElementById('nombre_jugador').value,
+                    document.getElementById('nombre_posicion').value,
+                    document.getElementById('anno_nacimiento').value,
+                    document.getElementById('id_equipo').value
+                )">Agregar</button>
+            </div>
+            <h3>Listado de jugadores</h3>
+            
+            <!-- Botón para abrir el modal -->
+            <button onclick="abrirModalFiltro()">Filtrar</button>
+
+            <!-- Limpiar filtros -->
+            <button onclick="controller.mostrarJugadores()">Mostrar todos</button>
+
+            <!-- Modal de filtro -->
+            <div id="modalFiltro" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5);">
+                <div style="background-color:rgb(67, 67, 67); padding:20px; margin:100px auto; width:300px; border-radius:10px; position:relative;">
+                    <h3>Filtrar jugadores</h3>
+                    
+                    <label for="filtroEquipo">ID de equipo:</label>
+                    <input type="number" id="filtroEquipo"><br><br>
+
+                    <label for="filtroPosicion">Posición:</label>
+                    <input type="text" id="filtroPosicion" placeholder="portero, defensa..."><br><br>
+
+                    <button onclick="controller.aplicarFiltros()">Aplicar filtros</button>
+                    <button onclick="cerrarModalFiltro()">Cancelar</button>
+                </div>
+            </div>
+
+            <ul id="lista"></ul>
         </div>
     </div>
     <script>
         const controller = new Controlador();
+
+        // ELIMINAR
+        controller.mostrarJugadores();
+
+        function abrirModalFiltro() {
+            document.getElementById('modalFiltro').style.display = 'block';
+        }
+
+        function cerrarModalFiltro() {
+            document.getElementById('modalFiltro').style.display = 'none';
+        }
     </script>
 </body>
 </html>
