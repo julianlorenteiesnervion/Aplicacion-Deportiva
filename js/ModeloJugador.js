@@ -81,7 +81,7 @@ class ModeloJugador {
     obtenerJugadoresPorPosicion(posicion) {
         this.obtenerDeLocalStorage();
         // Filtra la lista de jugadores para obtener los que pertenecen a la posición especificada
-        return this.listaJugadores.filter(jugador => jugador.getPosicion() === posicion);
+        return this.listaJugadores.filter(jugador => jugador.getPosicion().toLowerCase() === posicion.toLowerCase()); 
     }
 
     // Obtener el número de jugadores que pertenecen a X equipo

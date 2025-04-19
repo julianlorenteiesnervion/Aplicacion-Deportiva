@@ -46,10 +46,11 @@
             <h3>Listado de jugadores</h3>
             
             <!-- Botón para abrir el modal -->
-            <button onclick="abrirModalFiltro()">Filtrar</button>
+            <button class="filtrar" onclick="abrirModalFiltro()">Filtrar</button>
 
-            <!-- Limpiar filtros -->
-            <button onclick="controller.mostrarJugadores()">Mostrar todos</button>
+            <!-- Botón de limpiar filtros -->
+            <button id="btn-limpiar-filtros" class="filtrar" onclick="controller.limpiarFiltros()" style="display: none;">Limpiar</button>
+
 
             <!-- Modal de filtro -->
             <div id="modalFiltro" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5);">

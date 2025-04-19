@@ -63,17 +63,32 @@ class Controlador {
         const idEquipo = document.getElementById('filtroEquipo').value;
         const posicion = document.getElementById('filtroPosicion').value.trim();
     
-        let jugadoresFiltrados = this.modeloJugador.obtenerJugadores(); // Empezamos con todos
+        let jugadoresFiltrados = this.modeloJugador.obtenerJugadores();
     
         if (idEquipo !== "") {
             jugadoresFiltrados = this.modeloJugador.obtenerJugadoresPorEquipo(Number(idEquipo));
         }
     
         if (posicion !== "") {
-            jugadoresFiltrados = jugadoresFiltrados.filter(jugador => jugador.getPosicion() === posicion);
+            jugadoresFiltrados = this.modeloJugador.obtenerJugadoresPorPosicion(posicion);
         }
     
         this.vista.mostrarJugadores(jugadoresFiltrados);
         cerrarModalFiltro();
+    
+        document.getElementById("btn-limpiar-filtros").style.display = "inline-block";
     }
+
+    limpiarFiltros() {
+        // Mostrar todos los jugadores sin filtrar
+        this.mostrarJugadores();
+    
+        // Ocultar el botón de limpiar filtros
+        document.getElementById("btn-limpiar-filtros").style.display = "none";
+    
+        // Limpiar inputs del modal por si se abre de nuevo
+        document.getElementById("filtroEquipo").value = "";
+        document.getElementById("filtroPosicion").value = "";
+    }    
+    
 }
