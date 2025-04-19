@@ -32,7 +32,7 @@ class Vista {
               <span class="nombre">${jugador.getNombre()}</span><br>
               <span class="info">Posición: ${jugador.getPosicion()}</span><br>
               <span class="info">Año de nacimiento: ${jugador.getAnnoNacimiento()}</span><br>
-              <span class="info">Equipo: ${jugador.getEquipo()}</span>
+              <span class="info">Equipo: ${controller.obtenerNombreEquipo(jugador.getEquipo())}</span>
               <div class="button-group"><button onclick="controller.modificarJugador(${jugador.getId()})" class="modificar">Modificar</button>
               <button onclick="controller.eliminarJugador(${jugador.getId()})" class="eliminar">Eliminar</button></div>
             </li>`;

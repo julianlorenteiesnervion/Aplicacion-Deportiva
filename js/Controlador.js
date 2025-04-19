@@ -36,6 +36,11 @@ class Controlador {
     mostrarEquipos() {
         this.vista.mostrarEquipos(this.modeloEquipo.obtenerEquipos());
     }
+
+    obtenerNombreEquipo(idEquipo) {
+        const equipo = this.modeloEquipo.obtenerEquipoPorId(Number(idEquipo));
+        return equipo ? equipo.getNombre() : "Sin equipo";
+    }
     
     /* Funciones para manejar los jugadores */
     mostrarJugadores() {

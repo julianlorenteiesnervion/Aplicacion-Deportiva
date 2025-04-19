@@ -67,4 +67,12 @@ class ModeloEquipo {
         return this.listaEquipos[this.listaEquipos.length - 1].getId();
     }
 
+    // Obtener equipo mediante su id
+    obtenerEquipoPorId(id) {
+        this.obtenerDeLocalStorage();
+        // Busca el equipo en la lista mediante su id
+        const equipo = this.listaEquipos.find(equipo => equipo.getId() === id);
+        return equipo || 0; // Devuelve el equipo si lo encuentra, o 0 si no lo encuentra
+    }
+
 }

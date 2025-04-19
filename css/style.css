@@ -186,6 +186,38 @@ h3 {
     color: #00ff55;
 }
 
+#tituloListado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5em;
+    color: #00ff55;
+    margin-top: 1em;
+}
+
+#botonesListado {
+    display: flex;
+    gap: 1em;
+    margin-left: auto;
+}
+
+#botonesListado button {
+    font-size: 0.8em;
+    padding: 0.6em 1.2em;
+    background-color: rgb(0, 158, 26);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+#botonesListado button:hover {
+    background-color: rgb(0, 120, 20);
+    cursor: pointer;
+}
+
+/* LISTA DE JUGADORES */
 ul#lista {
     list-style-type: none; 
     margin: 0;
