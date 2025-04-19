@@ -41,6 +41,13 @@ class Controlador {
         const equipo = this.modeloEquipo.obtenerEquipoPorId(Number(idEquipo));
         return equipo ? equipo.getNombre() : "Sin equipo";
     }
+
+    obtenerEquiposParaSelect() {
+        return this.modeloEquipo.obtenerEquipos().map(equipo => ({
+            id: equipo.getId(),
+            nombre: equipo.getNombre()
+        }));
+    }
     
     /* Funciones para manejar los jugadores */
     mostrarJugadores() {

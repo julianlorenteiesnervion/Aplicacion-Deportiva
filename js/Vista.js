@@ -71,14 +71,23 @@ class Vista {
     /// Mostrar el menú de jugadores donde se puede agregar un nuevo jugador 
     mostrarMenuJugadores() {
         const menu = document.getElementById('menu_drch');
+        const equipos = controller.obtenerEquiposParaSelect();
 
         document.title = "FutManager - Jugadores";
 
+        let selectEquipos = '<select id="id_equipo" required><option value="">Seleccione un equipo</option>';
+        
+        equipos.forEach(equipo => {
+            selectEquipos += `<option value="${equipo.id}">${equipo.nombre}</option>`;
+        });
+        
+        selectEquipos += '</select>';
+
         menu.innerHTML = `<div id="menu_añadir_jugador">
-                <input type="text" id="nombre_jugador" placeholder="Jugador...">
-                <input type="text" id="nombre_posicion" placeholder="Posición...">
-                <input type="text" id="anno_nacimiento" placeholder="Año de nacimiento...">
-                <input type="text" id="id_equipo" placeholder="ID del equipo...">
+                <input type="text" id="nombre_jugador" placeholder="Jugador..." required>
+                <input type="text" id="nombre_posicion" placeholder="Posición..." required>
+                <input type="number" id="anno_nacimiento" placeholder="Año de nacimiento..." required>
+                ${selectEquipos}
                 <button onclick="controller.agregarJugador(
                     document.getElementById('nombre_jugador').value,
                     document.getElementById('nombre_posicion').value,
@@ -86,7 +95,13 @@ class Vista {
                     document.getElementById('id_equipo').value
                 )">Agregar</button>
             </div>
-            <h3>Listado de jugadores</h3>
+            <h3 id="tituloListado">
+                Listado de jugadores
+                <div id="botonesListado">
+                    <button class="filtrar" onclick="abrirModalFiltro()">Filtrar</button>
+                    <button id="btn-limpiar-filtros" class="filtrar" onclick="controller.limpiarFiltros()" style="display: none;">Limpiar</button>
+                </div>
+            </h3>
             <ul id="lista"></ul>`;
     }
 }
