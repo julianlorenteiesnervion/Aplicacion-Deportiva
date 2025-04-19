@@ -98,7 +98,7 @@ class Vista {
             <h3 id="tituloListado">
                 Listado de jugadores
                 <div id="botonesListado">
-                    <button class="filtrar" onclick="abrirModalFiltro()">Filtrar</button>
+                    <button class="filtrar" onclick="controller.abrirModalFiltro()">Filtrar</button>
                     <button id="btn-limpiar-filtros" class="filtrar" onclick="controller.limpiarFiltros()" style="display: none;">Limpiar</button>
                 </div>
             </h3>

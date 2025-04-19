@@ -23,6 +23,19 @@ class Controlador {
 
     /* Modales */
     abrirModalFiltro() {
+        const selectEquipo = document.getElementById('filtroEquipo');
+        
+        // Limpiar opciones existentes
+        selectEquipo.innerHTML = '<option value="">Todos los equipos</option>';
+        
+        // Añadir opciones de equipos
+        this.modeloEquipo.obtenerEquipos().forEach(equipo => {
+            const option = document.createElement('option');
+            option.value = equipo.getId();
+            option.textContent = equipo.getNombre();
+            selectEquipo.appendChild(option);
+        });
+        
         document.getElementById('modalFiltro').style.display = 'block';
     }
 
@@ -83,20 +96,20 @@ class Controlador {
     aplicarFiltros() {
         const idEquipo = document.getElementById('filtroEquipo').value;
         const posicion = document.getElementById('filtroPosicion').value.trim();
-    
+        
         let jugadoresFiltrados = this.modeloJugador.obtenerJugadores();
-    
+        
         if (idEquipo !== "") {
             jugadoresFiltrados = this.modeloJugador.obtenerJugadoresPorEquipo(Number(idEquipo));
         }
-    
+        
         if (posicion !== "") {
             jugadoresFiltrados = this.modeloJugador.obtenerJugadoresPorPosicion(posicion);
         }
-    
+        
         this.vista.mostrarJugadores(jugadoresFiltrados);
-        this.cerrarModalFiltro(); // Usar el método del controlador
-    
+        this.cerrarModalFiltro();
+        
         document.getElementById("btn-limpiar-filtros").style.display = "inline-block";
     }
 
