@@ -23,6 +23,8 @@ class ModeloEquipo {
                 res = 2; // Ciudad vacía
             } else if (equipo.getEstadio().trim() === "") {
                 res = 3; // Estadio vacío
+            } else if (this.listaEquipos.some(e => e.getNombre().toLowerCase() === equipo.getNombre().toLowerCase())) {
+                res = 4; // Nombre de equipo ya existe
             }
 
             // Si el equipo no existe y los campos no están vacíos, lo agrega a la lista
