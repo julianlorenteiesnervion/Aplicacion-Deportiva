@@ -27,6 +27,8 @@ class ModeloJugador {
                 res = 4; // Equipo vacío
             } else if (jugador.getAnnoNacimiento() > new Date().getFullYear()) {
                 res = 5; // Año de nacimiento mayor al año actual
+            } else if (jugador.getAnnoNacimiento() < 1900) {
+                res = 6; // Año de nacimiento menor a 1900
             }
 
             // Si el jugador no existe y los campos no están vacíos y cumplen con las reglas, lo agrega a la lista

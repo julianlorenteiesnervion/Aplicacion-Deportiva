@@ -9,7 +9,6 @@ class Vista {
         equipos.forEach(equipo => {
             lista.innerHTML += `
             <li>
-            <span class="id">${equipo.getId()}</span><br>
               <span class="nombre">${equipo.getNombre()}</span><br>
               <span class="info">Ciudad: ${equipo.getCiudad()}</span><br>
               <span class="info">Estadio: ${equipo.getEstadio()}</span>
@@ -28,7 +27,6 @@ class Vista {
         jugadores.forEach(jugador => {
             lista.innerHTML += `
             <li>
-              <span class="id">${jugador.getId()}</span><br>
               <span class="nombre">${jugador.getNombre()}</span><br>
               <span class="info">Posición: ${jugador.getPosicion()}</span><br>
               <span class="info">Año de nacimiento: ${jugador.getAnnoNacimiento()}</span><br>
