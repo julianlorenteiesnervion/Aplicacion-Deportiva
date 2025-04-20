@@ -86,8 +86,23 @@ class Controlador {
 
     agregarJugador(nombre, posicion, annoNacimiento, equipo) {
         let jugador = new Jugador(Number(this.modeloJugador.obtenerUltimaId()) + 1, nombre, posicion, annoNacimiento, equipo);
-        this.modeloJugador.agregarJugador(jugador);
-        this.mostrarJugadores();
+        const resultado = this.modeloJugador.agregarJugador(jugador);
+        
+        if (resultado === 0) { // Solo si se agregó correctamente
+            this.limpiarFormularioJugador();
+            this.mostrarJugadores();
+        } else {
+            console.error("Error al agregar jugador:", resultado);
+        }
+    }
+    
+    limpiarFormularioJugador() {
+        document.getElementById('nombre_jugador').value = '';
+        document.getElementById('nombre_posicion').value = '';
+        document.getElementById('anno_nacimiento').value = '';
+        document.getElementById('id_equipo').value = '';
+        
+        document.getElementById('nombre_jugador').focus();
     }
 
     eliminarJugador(id) {
@@ -111,7 +126,7 @@ class Controlador {
             "Extremo"
         ];
     }
-    
+
     modificarJugador(id) {
         const jugador = this.modeloJugador.obtenerJugadores().find(j => j.getId() === id);
         if (!jugador) return;
