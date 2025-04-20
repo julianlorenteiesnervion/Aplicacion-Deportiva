@@ -45,22 +45,26 @@ class Vista {
             <ul id="lista"></ul>`;
     }
 
-    mostrarEquipos(equipos) {
+    mostrarEquipos(equipos, jugadores) {
         const lista = document.getElementById('lista');
         lista.innerHTML = "";
-
+    
         equipos.forEach(equipo => {
+            // Contar jugadores del equipo actual
+            const cantidad = jugadores.filter(j => Number(j.getEquipo()) === equipo.getId()).length;
+    
             lista.innerHTML += `
                 <li>
                     <span class="nombre">${equipo.getNombre()}</span><br>
                     <span class="info">Ciudad: ${equipo.getCiudad()}</span><br>
-                    <span class="info">Estadio: ${equipo.getEstadio()}</span>
+                    <span class="info">Estadio: ${equipo.getEstadio()}</span><br>
+                    <span class="info"><strong>Cantidad de jugadores:</strong> ${cantidad}</span>
                     <div class="button-group">
                         <button onclick="controller.eliminarEquipo(${equipo.getId()})" class="eliminar">Eliminar</button>
                     </div>
                 </li>`;
         });
-    }
+    }    
 
     mostrarJugadores(jugadores) {
         const lista = document.getElementById('lista');

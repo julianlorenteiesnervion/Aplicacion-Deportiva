@@ -77,8 +77,10 @@ class Controlador {
     }
 
     mostrarEquipos() {
-        this.vista.mostrarEquipos(this.modeloEquipo.obtenerEquipos());
-    }
+        const equipos = this.modeloEquipo.obtenerEquipos();
+        const jugadores = this.modeloJugador.obtenerJugadores();
+        this.vista.mostrarEquipos(equipos, jugadores);
+    }    
 
     obtenerNombreEquipo(idEquipo) {
         const equipo = this.modeloEquipo.obtenerEquipoPorId(Number(idEquipo));
