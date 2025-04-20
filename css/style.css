@@ -448,3 +448,34 @@ ul#lista li button.modificar:hover {
 .icon-clear::before {
     content: "×";
 }
+
+/* Estilos para el modal de modificación */
+#modalModificarJugador button {
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    background-color: rgb(0, 158, 26);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+    margin-right: 0.5em;
+}
+
+#modalModificarJugador button:hover {
+    background-color: rgb(0, 120, 20);
+    cursor: pointer;
+}
+
+#modalModificarJugador .form-group {
+    margin-bottom: 1em;
+}
+
+#modalModificarJugador .form-select {
+    width: 100%;
+    padding: 0.6em;
+    background-color: #292929;
+    color: white;
+    border: none;
+    border-radius: 6px;
+}

@@ -54,6 +54,28 @@
         </div>
     </div>
 
+    <!-- Modal para modificar jugador -->
+    <div id="modalModificarJugador" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); z-index: 2000;">
+        <div style="background-color:rgb(67, 67, 67); padding:20px; margin:100px auto; width:300px; border-radius:10px; position:relative;">
+            <h3>Modificar Jugador</h3>
+            <div class="form-group">
+                <label for="modificarPosicion">Posición:</label>
+                <select id="modificarPosicion" class="form-select">
+                    <option value="">Seleccione posición</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="modificarEquipo">Equipo:</label>
+                <select id="modificarEquipo" class="form-select">
+                    <option value="">Seleccione equipo</option>
+                </select>
+            </div>
+            <br>
+            <button onclick="controller.guardarCambiosJugador()">Guardar</button>
+            <button onclick="controller.cerrarModalModificar()">Cancelar</button>
+        </div>
+    </div>
+
     <script>
         const controller = new Controlador();
 

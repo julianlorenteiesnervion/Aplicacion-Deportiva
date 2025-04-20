@@ -111,6 +111,62 @@ class Controlador {
             "Extremo"
         ];
     }
+    
+    modificarJugador(id) {
+        const jugador = this.modeloJugador.obtenerJugadores().find(j => j.getId() === id);
+        if (!jugador) return;
+
+        // Guardar el ID del jugador que estamos modificando
+        this.jugadorEnEdicion = id;
+
+        // Llenar el select de posiciones
+        const selectPosicion = document.getElementById('modificarPosicion');
+        selectPosicion.innerHTML = '<option value="">Seleccione posición</option>';
+        this.obtenerPosiciones().forEach(pos => {
+            const option = document.createElement('option');
+            option.value = pos;
+            option.textContent = pos;
+            option.selected = pos === jugador.getPosicion();
+            selectPosicion.appendChild(option);
+        });
+
+        // Llenar el select de equipos
+        const selectEquipo = document.getElementById('modificarEquipo');
+        selectEquipo.innerHTML = '<option value="">Seleccione equipo</option>';
+        this.modeloEquipo.obtenerEquipos().forEach(equipo => {
+            const option = document.createElement('option');
+            option.value = equipo.getId();
+            option.textContent = equipo.getNombre();
+            option.selected = equipo.getId() === Number(jugador.getEquipo());
+            selectEquipo.appendChild(option);
+        });
+
+        // Mostrar el modal
+        document.getElementById('modalModificarJugador').style.display = 'block';
+    }
+
+    cerrarModalModificar() {
+        document.getElementById('modalModificarJugador').style.display = 'none';
+        this.jugadorEnEdicion = null;
+    }
+
+    guardarCambiosJugador() {
+        if (!this.jugadorEnEdicion) return;
+
+        const nuevaPosicion = document.getElementById('modificarPosicion').value;
+        const nuevoEquipo = document.getElementById('modificarEquipo').value;
+
+        if (nuevaPosicion && nuevaPosicion.trim() !== "") {
+            this.modeloJugador.actualizarPosicionJugador(this.jugadorEnEdicion, nuevaPosicion);
+        }
+
+        if (nuevoEquipo && nuevoEquipo.trim() !== "") {
+            this.modeloJugador.actualizarEquipoJugador(this.jugadorEnEdicion, nuevoEquipo);
+        }
+
+        this.mostrarJugadores();
+        this.cerrarModalModificar();
+    }
 
     /* Filtrado de datos */
     aplicarFiltros() {
