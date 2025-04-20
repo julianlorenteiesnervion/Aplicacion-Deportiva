@@ -249,12 +249,14 @@ ul#lista li {
 
 ul#lista li .nombre {
     font-size: 1.2em; 
-    font-weight: bold; 
+    font-weight: bold;
+    padding: 0.5em;
 }
 
 ul#lista li .info {
     font-size: 1em; 
     color: #d3d3d3;
+    padding: 1em;
 }
 
 /*Botones de eliminar y modificar*/
