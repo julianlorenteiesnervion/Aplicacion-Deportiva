@@ -70,7 +70,6 @@ class Controlador {
         }
     }
     
-      
     eliminarEquipo(id) {
         this.modeloEquipo.eliminarEquipo(id);
         this.mostrarEquipos();
