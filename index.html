@@ -45,7 +45,10 @@
                 <option value="">Todos los equipos</option>
             </select><br><br>
             <label for="filtroPosicion">Posición:</label>
-            <input type="text" id="filtroPosicion" placeholder="portero, defensa..."><br><br>
+            <select id="filtroPosicion">
+                <option value="">Todas las posiciones</option>
+            </select>
+            <br><br>
             <button onclick="controller.aplicarFiltros()">Aplicar filtros</button>
             <button onclick="controller.cerrarModalFiltro()">Cancelar</button>
         </div>

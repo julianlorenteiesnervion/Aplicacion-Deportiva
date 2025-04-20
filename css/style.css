@@ -291,6 +291,7 @@ ul#lista li button.modificar:hover {
     background-color: rgb(0, 129, 21); 
 }
 
+#menu_añadir_jugador select, 
 #modalFiltro select {
     padding: 0.6em;
     font-size: 1em;
@@ -300,8 +301,10 @@ ul#lista li button.modificar:hover {
     color: white;
     outline: none;
     width: 100%;
+    margin-bottom: 0.5em;
 }
 
+#menu_añadir_jugador select option, 
 #modalFiltro select option {
     background-color: #292929;
 }

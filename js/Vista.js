@@ -75,6 +75,16 @@ class Vista {
 
         document.title = "FutManager - Jugadores";
 
+        /* Crear un select para las posiciones */
+        let selectPosicion = '<select id="nombre_posicion" required><option value="">Seleccione posición</option>';
+
+        controller.obtenerPosiciones().forEach(pos => {
+            selectPosicion += `<option value="${pos}">${pos}</option>`;
+        });
+
+        selectPosicion += '</select>';
+
+        /* Crear un select para los equipos */
         let selectEquipos = '<select id="id_equipo" required><option value="">Seleccione un equipo</option>';
         
         equipos.forEach(equipo => {
@@ -85,7 +95,7 @@ class Vista {
 
         menu.innerHTML = `<div id="menu_añadir_jugador">
                 <input type="text" id="nombre_jugador" placeholder="Jugador..." required>
-                <input type="text" id="nombre_posicion" placeholder="Posición..." required>
+                ${selectPosicion}
                 <input type="number" id="anno_nacimiento" placeholder="Año de nacimiento..." required>
                 ${selectEquipos}
                 <button onclick="controller.agregarJugador(

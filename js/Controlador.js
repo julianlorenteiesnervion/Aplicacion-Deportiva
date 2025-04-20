@@ -24,16 +24,24 @@ class Controlador {
     /* Modales */
     abrirModalFiltro() {
         const selectEquipo = document.getElementById('filtroEquipo');
+        const selectPosicion = document.getElementById('filtroPosicion');
         
-        // Limpiar opciones existentes
+        // Limpiar y cargar equipos
         selectEquipo.innerHTML = '<option value="">Todos los equipos</option>';
-        
-        // Añadir opciones de equipos
         this.modeloEquipo.obtenerEquipos().forEach(equipo => {
             const option = document.createElement('option');
             option.value = equipo.getId();
             option.textContent = equipo.getNombre();
             selectEquipo.appendChild(option);
+        });
+        
+        // Limpiar y cargar posiciones
+        selectPosicion.innerHTML = '<option value="">Todas las posiciones</option>';
+        this.obtenerPosiciones().forEach(pos => {
+            const option = document.createElement('option');
+            option.value = pos;
+            option.textContent = pos;
+            selectPosicion.appendChild(option);
         });
         
         document.getElementById('modalFiltro').style.display = 'block';
@@ -90,6 +98,18 @@ class Controlador {
     actualizarPosicionJugador(id, nuevaPosicion) {  
         this.modeloJugador.actualizarPosicion(id, nuevaPosicion);
         this.mostrarJugadores();
+    }
+
+    obtenerPosiciones() {
+        return [
+            "Portero",
+            "Defensa",
+            "Lateral",
+            "Centrocampista",
+            "Mediocentro",
+            "Delantero",
+            "Extremo"
+        ];
     }
 
     /* Filtrado de datos */
