@@ -54,9 +54,22 @@ class Controlador {
     /* Funciones para manejar los equipos */
     agregarEquipo(nombre, ciudad, estadio) {
         let equipo = new Equipo(Number(this.modeloEquipo.obtenerUltimaId()) + 1, nombre, ciudad, estadio);
-        this.modeloEquipo.agregarEquipo(equipo);
-        this.mostrarEquipos();
+        const resultado = this.modeloEquipo.agregarEquipo(equipo);
+    
+        if (resultado === 0) {
+            this.mostrarEquipos();
+            this.mostrarNotificacion("Equipo agregado correctamente", "exito");
+        } else {
+            const errores = {
+                1: "El nombre del equipo está vacío.",
+                2: "La ciudad del equipo está vacía.",
+                3: "El estadio del equipo está vacío.",
+                4: "El nombre del equipo ya existe."
+            };
+            this.mostrarNotificacion(`Error: ${errores[resultado]}`, "error");
+        }
     }
+    
       
     eliminarEquipo(id) {
         this.modeloEquipo.eliminarEquipo(id);
@@ -87,14 +100,24 @@ class Controlador {
     agregarJugador(nombre, posicion, annoNacimiento, equipo) {
         let jugador = new Jugador(Number(this.modeloJugador.obtenerUltimaId()) + 1, nombre, posicion, annoNacimiento, equipo);
         const resultado = this.modeloJugador.agregarJugador(jugador);
-        
-        if (resultado === 0) { // Solo si se agregó correctamente
+    
+        if (resultado === 0) {
             this.limpiarFormularioJugador();
             this.mostrarJugadores();
+            this.mostrarNotificacion("Jugador agregado correctamente", "exito");
         } else {
-            console.error("Error al agregar jugador:", resultado);
+            const errores = {
+                1: "El nombre del jugador está vacío.",
+                2: "La posición está vacía.",
+                3: "El año de nacimiento está vacío.",
+                4: "Debe seleccionar un equipo.",
+                5: "El año de nacimiento no puede ser mayor al actual.",
+                6: "El año de nacimiento no puede ser menor a 1900."
+            };
+            this.mostrarNotificacion(`Error: ${errores[resultado]}`, "error");
         }
     }
+    
     
     limpiarFormularioJugador() {
         document.getElementById('nombre_jugador').value = '';
@@ -214,6 +237,20 @@ class Controlador {
         // Limpiar inputs del modal por si se abre de nuevo
         document.getElementById("filtroEquipo").value = "";
         document.getElementById("filtroPosicion").value = "";
-    }    
+    }
+
+    mostrarNotificacion(mensaje, tipo) {
+        const notificacion = document.getElementById('notificacion');
+        notificacion.textContent = mensaje;
+    
+        // Aplica la clase según tipo: 'exito' o 'error'
+        notificacion.className = `notificacion ${tipo}`;
+        notificacion.style.display = 'block';
+    
+        // Oculta después de 3 segundos
+        setTimeout(() => {
+            notificacion.style.display = 'none';
+        }, 3000);
+    }
     
 }
