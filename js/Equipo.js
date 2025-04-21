@@ -1,12 +1,11 @@
 class Equipo {
 
     // Constructor de la clase Equipo que inicializa los atributos del equipo
-    constructor(id, nombre, ciudad, estadio, eliminado = false) {
+    constructor(id, nombre, ciudad, estadio) {
         this.id = id;
         this.nombre = nombre;
         this.ciudad = ciudad;
         this.estadio = estadio;
-        this.eliminado = eliminado; // Indica si el equipo ha sido eliminado
     }
 
     // Devuelve el id del equipo
@@ -27,16 +26,6 @@ class Equipo {
     // Devuelve el estadio del equipo
     getEstadio() {
         return this.estadio;
-    }
-
-    // Devuelve si el equipo ha sido eliminado
-    getEliminado() {
-        return this.eliminado;
-    }
-
-    // Establece el estado de eliminado del equipo
-    setEliminado(eliminado) {
-        this.eliminado = eliminado;
     }
 
 }

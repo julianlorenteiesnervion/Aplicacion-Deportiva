@@ -221,21 +221,20 @@ class Controlador {
         const idEquipo = document.getElementById('filtroEquipo').value;
         const posicion = document.getElementById('filtroPosicion').value.trim();
         
-        let jugadoresFiltrados = this.modeloJugador.obtenerJugadores(); 
+        let jugadoresFiltrados = this.modeloJugador.obtenerJugadores();
         
         if (idEquipo !== "") {
-            jugadoresFiltrados = jugadoresFiltrados.filter(j => 
-                Number(j.getEquipo()) === Number(idEquipo)
-            );
+            jugadoresFiltrados = this.modeloJugador.obtenerJugadoresPorEquipo(Number(idEquipo));
         }
         
         if (posicion !== "") {
-            jugadoresFiltrados = jugadoresFiltrados.filter(j => 
-                j.getPosicion().toLowerCase() === posicion.toLowerCase()
-            );
+            jugadoresFiltrados = this.modeloJugador.obtenerJugadoresPorPosicion(posicion);
         }
         
         this.vista.mostrarJugadores(jugadoresFiltrados);
+        this.cerrarModalFiltro();
+        
+        document.getElementById("btn-limpiar-filtros").style.display = "inline-block";
     }
 
     limpiarFiltros() {

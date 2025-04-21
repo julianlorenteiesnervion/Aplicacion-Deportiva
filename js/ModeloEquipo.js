@@ -7,7 +7,7 @@ class ModeloEquipo {
     // Obtener todos los equipos de la lista
     obtenerEquipos() {
         this.obtenerDeLocalStorage();
-        return this.listaEquipos.filter(equipo => !equipo.getEliminado()); // Filtra los equipos eliminados
+        return this.listaEquipos;
     }    
 
     // Agregar un equipo a la lista
@@ -23,7 +23,7 @@ class ModeloEquipo {
                 res = 2; // Ciudad vacía
             } else if (equipo.getEstadio().trim() === "") {
                 res = 3; // Estadio vacío
-            } else if (this.listaEquipos.some(e => e.getNombre().toLowerCase() === equipo.getNombre().toLowerCase() && !e.getEliminado())) {
+            } else if (this.listaEquipos.some(e => e.getNombre().toLowerCase() === equipo.getNombre().toLowerCase())) {
                 res = 4; // Nombre de equipo ya existe
             }
 
@@ -40,18 +40,16 @@ class ModeloEquipo {
     // Eliminar un equipo de la lista mediante su id
     eliminarEquipo(id) {
         this.obtenerDeLocalStorage();
-        const equipo = this.listaEquipos.find(equipo => equipo.getId() === id);
-        if (equipo) {
-            equipo.setEliminado(true);
-            this.subirALocalStorage();
-        }
+        // Filtra la lista de equipos para eliminar el equipo con el id especificado
+        this.listaEquipos = this.listaEquipos.filter(equipo => equipo.getId() !== id);
+        this.subirALocalStorage();
     }
 
     // Carga en el array listaEquipos los equipos que hay en el localStorage
     // Si no hay nada en el localStorage, se carga un array vacío
     obtenerDeLocalStorage() {
         const datos = JSON.parse(localStorage.getItem('equipos')) || [];
-        this.listaEquipos = datos.map(e => new Equipo(e.id, e.nombre, e.ciudad, e.estadio, e.eliminado));
+        this.listaEquipos = datos.map(e => new Equipo(e.id, e.nombre, e.ciudad, e.estadio));
     }
 
     // Sube la lista de equipos al localStorage
@@ -75,7 +73,7 @@ class ModeloEquipo {
     obtenerEquipoPorId(id) {
         this.obtenerDeLocalStorage();
         // Busca el equipo en la lista mediante su id
-        const equipo = this.listaEquipos.find(equipo => equipo.getId() === id && !equipo.getEliminado());
+        const equipo = this.listaEquipos.find(equipo => equipo.getId() === id);
         return equipo || 0; // Devuelve el equipo si lo encuentra, o 0 si no lo encuentra
     }
 
