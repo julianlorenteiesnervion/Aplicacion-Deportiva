@@ -509,3 +509,119 @@ ul#lista li button.modificar:hover {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 0.95; transform: translateY(0); }
 }
+
+/* Estadísticas */
+.stats-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5em;
+    margin: 2em 0;
+}
+
+.stat-card {
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    padding: 1.5em;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.stat-value {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #00ff55;
+    margin-bottom: 0.2em;
+}
+
+.stat-label {
+    font-size: 0.9em;
+    color: #bbb;
+}
+
+.stats-section {
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    padding: 1.5em;
+    margin: 1.5em 0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.stats-section h4 {
+    margin-top: 0;
+    margin-bottom: 1em;
+    color: #00ff55;
+}
+
+.highlight-stat {
+    font-size: 1.2em;
+    padding: 0.8em;
+    background-color: #292929;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.position-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.8em;
+}
+
+.position-item {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.position-name {
+    width: 120px;
+    font-weight: 500;
+}
+
+.position-bar-container {
+    flex-grow: 1;
+    height: 20px;
+    background-color: #292929;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.position-bar {
+    height: 100%;
+    background-color: #00a52f;
+    transition: width 0.5s ease;
+}
+
+.position-count {
+    width: 40px;
+    text-align: right;
+    font-weight: bold;
+}
+
+.recent-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.recent-list li {
+    padding: 0.8em;
+    margin-bottom: 0.5em;
+    background-color: #292929;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.recent-item {
+    font-weight: 500;
+}
+
+.recent-info {
+    color: #bbb;
+    font-size: 0.9em;
+}

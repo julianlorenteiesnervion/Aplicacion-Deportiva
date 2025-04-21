@@ -2,11 +2,92 @@ class Vista {
 
     mostrarMenuInicio() {
         const menu = document.getElementById('menu_drch');
-
+        const equipos = controller.modeloEquipo.obtenerEquipos();
+        const jugadores = controller.modeloJugador.obtenerJugadores();
+        
+        // Calcular estadísticas
+        const totalEquipos = equipos.length;
+        const totalJugadores = jugadores.length;
+        const jugadoresPorEquipo = totalEquipos > 0 ? (totalJugadores / totalEquipos).toFixed(1) : 0;
+        
+        // Obtener el equipo con más jugadores
+        let equipoConMasJugadores = { nombre: "Ninguno", cantidad: 0 };
+        if (totalEquipos > 0) {
+            equipos.forEach(equipo => {
+                const cantidad = jugadores.filter(j => Number(j.getEquipo()) === equipo.getId()).length;
+                if (cantidad > equipoConMasJugadores.cantidad) {
+                    equipoConMasJugadores = {
+                        nombre: equipo.getNombre(),
+                        cantidad: cantidad
+                    };
+                }
+            });
+        }
+        
+        // Obtener distribución por posición
+        const posiciones = controller.obtenerPosiciones();
+        const jugadoresPorPosicion = {};
+        posiciones.forEach(pos => {
+            jugadoresPorPosicion[pos] = jugadores.filter(j => j.getPosicion() === pos).length;
+        });
+        
         document.title = "FutManager - Inicio";
-
-        menu.innerHTML = `<h1>Bienvenido,</h1>
-            <h3>aquí tienes algunas estadísticas</h3>`;
+        
+        menu.innerHTML = `
+            <div class="stats-container">
+                <h1>Bienvenido a FutManager</h1>
+                <h3>Estadísticas generales</h3>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">${totalEquipos}</div>
+                        <div class="stat-label">Equipos registrados</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">${totalJugadores}</div>
+                        <div class="stat-label">Jugadores registrados</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">${jugadoresPorEquipo}</div>
+                        <div class="stat-label">Jugadores por equipo (promedio)</div>
+                    </div>
+                </div>
+                
+                <div class="stats-section">
+                    <h4>Equipo con más jugadores</h4>
+                    <div class="highlight-stat">
+                        ${equipoConMasJugadores.nombre} (${equipoConMasJugadores.cantidad} jugadores)
+                    </div>
+                </div>
+                
+                <div class="stats-section">
+                    <h4>Distribución por posición</h4>
+                    <div class="position-grid">
+                        ${posiciones.map(pos => `
+                            <div class="position-item">
+                                <div class="position-name">${pos}</div>
+                                <div class="position-bar-container">
+                                    <div class="position-bar" style="width: ${totalJugadores > 0 ? (jugadoresPorPosicion[pos]/totalJugadores*100) : 0}%"></div>
+                                </div>
+                                <div class="position-count">${jugadoresPorPosicion[pos]}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                
+                <div class="stats-section">
+                    <h4>Últimos equipos añadidos</h4>
+                    <ul class="recent-list">
+                        ${equipos.slice(-3).reverse().map(equipo => `
+                            <li>
+                                <span class="recent-item">${equipo.getNombre()}</span>
+                                <span class="recent-info">${equipo.getCiudad()} - ${equipo.getEstadio()}</span>
+                            </li>
+                        `).join('')}
+                    </ul>
+                </div>
+            </div>
+        `;
     }
 
     mostrarMenuEquipos() {
