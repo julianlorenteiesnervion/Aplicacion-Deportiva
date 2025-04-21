@@ -58,6 +58,7 @@ class Controlador {
     
         if (resultado === 0) {
             this.mostrarEquipos();
+            this.limpiarFormularioEquipo();
             this.mostrarNotificacion("Equipo agregado correctamente", "exito");
         } else {
             const errores = {
@@ -68,6 +69,14 @@ class Controlador {
             };
             this.mostrarNotificacion(`Error: ${errores[resultado]}`, "error");
         }
+    }
+
+    limpiarFormularioEquipo() {
+        document.getElementById('nombre_equipo').value = '';
+        document.getElementById('nombre_ciudad').value = '';
+        document.getElementById('nombre_estadio').value = '';
+        
+        document.getElementById('nombre_equipo').focus();
     }
     
     eliminarEquipo(id) {
