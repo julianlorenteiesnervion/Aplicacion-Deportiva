@@ -7,7 +7,7 @@ class ModeloEquipo {
     // Obtener todos los equipos de la lista
     obtenerEquipos() {
         this.obtenerDeLocalStorage();
-        return this.listaEquipos;
+        return this.listaEquipos.filter(equipo => !equipo.getEliminado()); // Filtra los equipos eliminados
     }    
 
     // Agregar un equipo a la lista
@@ -40,16 +40,18 @@ class ModeloEquipo {
     // Eliminar un equipo de la lista mediante su id
     eliminarEquipo(id) {
         this.obtenerDeLocalStorage();
-        // Filtra la lista de equipos para eliminar el equipo con el id especificado
-        this.listaEquipos = this.listaEquipos.filter(equipo => equipo.getId() !== id);
-        this.subirALocalStorage();
+        const equipo = this.listaEquipos.find(equipo => equipo.getId() === id);
+        if (equipo) {
+            equipo.setEliminado(true);
+            this.subirALocalStorage();
+        }
     }
 
     // Carga en el array listaEquipos los equipos que hay en el localStorage
     // Si no hay nada en el localStorage, se carga un array vacío
     obtenerDeLocalStorage() {
         const datos = JSON.parse(localStorage.getItem('equipos')) || [];
-        this.listaEquipos = datos.map(e => new Equipo(e.id, e.nombre, e.ciudad, e.estadio));
+        this.listaEquipos = datos.map(e => new Equipo(e.id, e.nombre, e.ciudad, e.estadio, e.eliminado));
     }
 
     // Sube la lista de equipos al localStorage
@@ -73,7 +75,7 @@ class ModeloEquipo {
     obtenerEquipoPorId(id) {
         this.obtenerDeLocalStorage();
         // Busca el equipo en la lista mediante su id
-        const equipo = this.listaEquipos.find(equipo => equipo.getId() === id);
+        const equipo = this.listaEquipos.find(equipo => equipo.getId() === id && !equipo.getEliminado());
         return equipo || 0; // Devuelve el equipo si lo encuentra, o 0 si no lo encuentra
     }
 

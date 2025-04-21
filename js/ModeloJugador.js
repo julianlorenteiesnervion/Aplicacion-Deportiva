@@ -7,7 +7,7 @@ class ModeloJugador {
     // Obtener todos los jugadores de la lista
     obtenerJugadores() {
         this.obtenerDeLocalStorage();
-        return this.listaJugadores;
+        return this.listaJugadores.filter(jugador => !jugador.getEliminado()); // Filtra los jugadores eliminados
     }
 
     // Agregar un jugador a la lista
@@ -44,10 +44,11 @@ class ModeloJugador {
     // Eliminar un jugador de la lista mediante su id
     eliminarJugador(id) {
         this.obtenerDeLocalStorage();
-
-        // Filtra la lista de jugadores para eliminar el jugador con el id especificado
-        this.listaJugadores = this.listaJugadores.filter(jugador => jugador.getId() !== id);
-        this.subirALocalStorage();
+        const jugador = this.listaJugadores.find(jugador => jugador.getId() === id);
+        if (jugador) {
+            jugador.setEliminado(true);
+            this.subirALocalStorage();
+        }
     }
 
     // Actualiza la posición de un jugador mediante su id
@@ -76,28 +77,31 @@ class ModeloJugador {
     obtenerJugadoresPorEquipo(equipo) {
         this.obtenerDeLocalStorage();
         // Filtra la lista de jugadores para obtener los que pertenecen al equipo especificado
-        return this.listaJugadores.filter(jugador => Number(jugador.getEquipo()) === Number(equipo));
+        return this.listaJugadores.filter(jugador => Number(jugador.getEquipo()) === Number(equipo) && !jugador.getEliminado());
     }
 
     // Obtener los jugadores que pertenecen a X posición
     obtenerJugadoresPorPosicion(posicion) {
         this.obtenerDeLocalStorage();
         // Filtra la lista de jugadores para obtener los que pertenecen a la posición especificada
-        return this.listaJugadores.filter(jugador => jugador.getPosicion().toLowerCase() === posicion.toLowerCase()); 
+        return this.listaJugadores.filter(jugador => jugador.getPosicion().toLowerCase() === posicion.toLowerCase() && !jugador.getEliminado()); 
     }
 
     // Obtener el número de jugadores que pertenecen a X equipo
     obtenerNumeroJugadoresPorEquipo(equipo) {
         this.obtenerDeLocalStorage();
         // Devuelve el número de jugadores que pertenecen al equipo especificado
-        return this.listaJugadores.reduce((contador, jugador) => Number(jugador.getEquipo()) === equipo ? contador + 1 : contador, 0);
+        return this.listaJugadores.reduce((contador, jugador) => 
+            (Number(jugador.getEquipo()) === equipo && !jugador.getEliminado()) ? 
+            contador + 1 : contador, 
+        0);
     }
 
     // Carga en el array listaJugadores los jugadores que hay en el localStorage
     // Si no hay nada en el localStorage, se carga un array vacío
     obtenerDeLocalStorage() {
         const datos = JSON.parse(localStorage.getItem('jugadores')) || [];
-        this.listaJugadores = datos.map(j => new Jugador(j.id, j.nombre, j.posicion, j.annoNacimiento, j.equipo));
+        this.listaJugadores = datos.map(j => new Jugador(j.id, j.nombre, j.posicion, j.annoNacimiento, j.equipo, j.eliminado));
     }    
 
     // Sube la lista de jugadores al localStorage

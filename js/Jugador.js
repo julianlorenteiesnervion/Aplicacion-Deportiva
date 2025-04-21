@@ -1,12 +1,13 @@
 class Jugador {
 
     // Constructor de la clase Jugador que inicializa los atributos del jugador
-    constructor(id, nombre, posicion, annoNacimiento, equipo) {
+    constructor(id, nombre, posicion, annoNacimiento, equipo, eliminado = false) {
         this.id = id;
         this.nombre = nombre;
         this.posicion = posicion;
         this.annoNacimiento = annoNacimiento;
         this.equipo = equipo;
+        this.eliminado = eliminado; // Indica si el jugador ha sido eliminado
     }
 
     // Devuelve el id del jugador
@@ -42,6 +43,16 @@ class Jugador {
     // Establecer el equipo del jugador
     setEquipo(equipo) {
         this.equipo = equipo;
+    }
+
+    // Devuelve si el jugador ha sido eliminado
+    getEliminado() {
+        return this.eliminado;
+    }
+
+    // Establece el estado de eliminado del jugador
+    setEliminado(eliminado) {
+        this.eliminado = eliminado;
     }
 
 }
