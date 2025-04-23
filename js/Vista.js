@@ -1,5 +1,6 @@
 class Vista {
 
+    // Muestra estadísticas generales de los equipos y jugadores
     mostrarMenuInicio() {
         const menu = document.getElementById('menu_drch');
         const equipos = controller.modeloEquipo.obtenerEquipos();
@@ -90,6 +91,8 @@ class Vista {
         `;
     }
 
+    /* Muestra un formulario para agregar equipos, una lista de equipos existentes
+    y su cantidad de jugadores */
     mostrarMenuEquipos() {
         const menu = document.getElementById('menu_drch');
 
@@ -126,6 +129,7 @@ class Vista {
             <ul id="lista"></ul>`;
     }
 
+    // Muestra los equipos con su información y el número de jugadores
     mostrarEquipos(equipos, jugadores) {
         const lista = document.getElementById('lista');
         lista.innerHTML = "";
@@ -147,6 +151,7 @@ class Vista {
         });
     }    
 
+    // Muestra los jugadores con su información
     mostrarJugadores(jugadores) {
         const lista = document.getElementById('lista');
         lista.innerHTML = "";
@@ -166,6 +171,7 @@ class Vista {
         });
     }
 
+    // Muestra un formulario para agregar jugadores y los controles de filtrado
     mostrarMenuJugadores() {
         const menu = document.getElementById('menu_drch');
         const equipos = controller.obtenerEquiposParaSelect();

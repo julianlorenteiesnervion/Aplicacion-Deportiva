@@ -249,6 +249,7 @@ class Controlador {
         document.getElementById("filtroPosicion").value = "";
     }
 
+    /* Función para mostrar notificaciones */
     mostrarNotificacion(mensaje, tipo) {
         const notificacion = document.getElementById('notificacion');
         notificacion.textContent = mensaje;
